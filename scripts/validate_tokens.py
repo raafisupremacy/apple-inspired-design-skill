@@ -11,6 +11,7 @@ REQUIRED = {
     "textTertiary", "accent", "accentHover", "accentPressed", "accentSoft",
     "success", "warning", "danger",
 }
+MOTION_REQUIRED = {"fastMs", "baseMs", "slowMs", "maxMs", "reducedMs"}
 
 
 def luminance(hex_color: str) -> float:
@@ -37,11 +38,24 @@ def main() -> int:
         if not isinstance(value, str):
             raise SystemExit(f"color token is not a string: {name}")
         luminance(value)
+    motion = json.loads((root / "assets" / "tokens.json").read_text(encoding="utf-8"))["motion"]
+    missing_motion = MOTION_REQUIRED - motion.keys()
+    if missing_motion:
+        raise SystemExit(f"missing motion tokens: {', '.join(sorted(missing_motion))}")
+    if any(not isinstance(motion[name], int) or motion[name] <= 0 for name in MOTION_REQUIRED):
+        raise SystemExit("motion tokens must be positive integers")
+    if not motion["fastMs"] <= motion["baseMs"] <= motion["slowMs"] <= motion["maxMs"]:
+        raise SystemExit("motion durations must be ordered fast <= base <= slow <= max")
+    if motion["reducedMs"] >= motion["baseMs"]:
+        raise SystemExit("reduced motion duration must be shorter than base motion")
     css = (root / "assets" / "tokens.css").read_text(encoding="utf-8")
     for name in REQUIRED:
         kebab = re.sub(r"([A-Z])", lambda match: "-" + match.group(1).lower(), name)
         if f"--color-{kebab}:" not in css:
             raise SystemExit(f"missing CSS token: {name}")
+    for name in ("motion-fast", "motion-base", "motion-slow", "motion-max", "motion-reduced"):
+        if f"--{name}:" not in css:
+            raise SystemExit(f"missing CSS motion token: {name}")
     ratio = contrast(colors["text"], colors["bg"])
     if ratio < 4.5:
         raise SystemExit(f"primary text contrast is {ratio:.2f}:1; need at least 4.5:1")

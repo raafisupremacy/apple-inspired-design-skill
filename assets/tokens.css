@@ -29,6 +29,7 @@
   --motion-base: 280ms;
   --motion-slow: 480ms;
   --motion-max: 650ms;
+  --motion-reduced: 120ms;
   --ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
   --ease-linear: linear;
@@ -59,13 +60,5 @@
     --color-accent-hover: #64b5ff;
     --color-accent-pressed: #2997ff;
     --color-accent-soft: #0a2a4f;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --motion-fast: 1ms;
-    --motion-base: 1ms;
-    --motion-slow: 1ms;
   }
 }

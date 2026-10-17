@@ -101,7 +101,7 @@ Use a resistance curve after the useful range rather than a hard wall. Keep hit 
 
 ## Reduced motion and other preferences
 
-Honor `prefers-reduced-motion` on web and native Reduce Motion settings on mobile. Replace travel, bounce, shimmer, count-up, and parallax with an immediate state change or a short opacity change. Keep focus, hierarchy, and status information visible; do not merely set every duration to `1ms` if that causes content to flash or disappear.
+Honor `prefers-reduced-motion` on web and native Reduce Motion settings on mobile. Replace travel, bounce, shimmer, count-up, and parallax with an immediate state change or a short opacity change. Keep focus, hierarchy, and status information visible; do not merely set every duration to `1ms` if that causes content to flash or disappear. The starter token `--motion-reduced` is a short timing hint; it does not replace the alternate choreography.
 
 Also account for reduced transparency, increased contrast, text scaling, keyboard focus, touch, screen readers, and localization. Never use motion, color, sound, or position as the only signal.
 
