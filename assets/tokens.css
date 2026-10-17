@@ -28,6 +28,10 @@
   --motion-fast: 180ms;
   --motion-base: 280ms;
   --motion-slow: 480ms;
+  --motion-max: 650ms;
+  --ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-linear: linear;
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
   --text-body: 17px;
   --text-caption: 14px;
