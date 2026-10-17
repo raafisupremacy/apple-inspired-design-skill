@@ -128,6 +128,8 @@ Use a resistance curve after the useful range rather than a hard wall. Keep hit 
 
 Honor `prefers-reduced-motion` on web and native Reduce Motion settings on mobile. Replace travel, bounce, shimmer, count-up, and parallax with an immediate state change or a short opacity change. Keep focus, hierarchy, and status information visible; do not merely set every duration to `1ms` if that causes content to flash or disappear. The starter token `--motion-reduced` is a short timing hint; it does not replace the alternate choreography.
 
+Reduced motion must preserve open/closed visibility, selected position, focus, and operability. Do not apply blanket transform: none rules to components whose transforms encode positioning or hidden state. Remove travel transitions or define state-specific alternatives while keeping closed surfaces hidden and non-interactive. Check both open and closed states, including changing the preference while a surface is open. Replace smooth scrolling with immediate scrolling where appropriate.
+
 Also account for reduced transparency, increased contrast, text scaling, keyboard focus, touch, screen readers, and localization. Never use motion, color, sound, or position as the only signal.
 
 Example CSS fallback:

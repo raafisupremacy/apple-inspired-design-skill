@@ -31,3 +31,15 @@ Choose the background and elevation from the product’s use scene and material 
 Translate brand character into a small set of related decisions across composition, type hierarchy, density, imagery, control shape, depth, and motion. A font and accent swap alone does not establish identity. Explain how the selected decisions support the audience and task; do not make every dimension distinctive.
 
 Review these decisions together across a representative content surface, an interactive state, and a narrow layout. Related surfaces should feel like one product without forcing identical composition. Preserve useful repetition in catalogs, tables, and forms; visual variety is not a goal when it harms comparison or predictability.
+
+## Interpret the Apple reference
+
+Distinguish Apple-inspired design principles, an explicitly requested apple.com-like visual direction, and native platform conventions. These are related but not interchangeable. Default to principles adapted to the product; when the user requests closer visual resemblance, translate the relevant reference into composition, type roles, imagery, and motion while retaining the product's identity. Ask only if the distinction materially changes an unresolved direction. Do not call a serif, hue, or shape an Apple violation without an applicable requirement.
+
+Assign display typography a deliberate role. Check headline length, line breaks, weight, and its visual balance with media and actions at each composition. A display face suitable for a hero need not be repeated on every compact label or utility surface.
+
+## Icon language
+
+Do not use emoji as the default substitute for interface icons. Use the project's coherent icon family or suitable native symbols, matching stroke/fill treatment, optical size, baseline, and spacing. Reuse available assets rather than adding a dependency for a few symbols. Check platform availability and licensing before choosing a symbol set.
+
+Emoji may remain in user content or an explicitly expressive brand treatment; their presence alone is not evidence of AI generation or an Apple guideline violation. Decorative icons are optional. Success feedback and third-party actions should retain the interface's typography, geometry, and accessibility even when a distinct illustration or brand asset is appropriate.

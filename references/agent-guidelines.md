@@ -6,7 +6,7 @@
 2. Identify platform and input: web, iOS, Android, React Native, Flutter, touch, pointer, keyboard, voice, or mixed.
 3. Identify the user task, important content, brand constraints, and requested mode.
 4. Read every file in `references/` before making a recommendation or edit. Use the platform and topic references that govern the task as the primary guides, and use the remaining files to cross-check the decision.
-5. Inspect the real artifact or code before making claims. If it cannot be observed, say what remains unverified.
+5. Inspect the real artifact or code before making claims. If it cannot be observed, say what remains unverified. When a running UI is available, user screenshots are leads, not the audit boundary: inspect the whole in-scope surface and representative interactions independently, including unmarked regions.
 
 If the task is ambiguous, read `design-reasoning.md` before asking questions or choosing a visual direction. If brand inputs exist, read `brand-adaptation.md` before choosing tokens. If the UI feels generic or overdecorated, read `anti-patterns.md` before proposing polish.
 
@@ -73,3 +73,5 @@ Use the transfer process in design-reasoning.md when the user requests skill imp
 During a relevant interaction review, check entry and exit by keyboard, selection/activation, rapid reversal, dependent content, and the narrow layout. Inspect actual foreground/background pairs and the meaning of icons and announced values. Do not equate role attributes, animation declarations, or a successful validator with working behavior.
 
 When an audit is requested to improve this skill, frame each finding as observed design evidence, the reusable decision criterion it exposes, and where that criterion does not apply. Check existing guidance before adding a rule; do not present unrelated application defects as skill gaps or infer that a recent install caused the output.
+
+For independent visual review, inspect page-level composition and representative components before focusing on reported defects. Cover narrow, intermediate, and wide layouts, relevant themes, and overlay entry/exit within the requested scope. Track what was observed live, supplied as a screenshot, inferred from CSS, or left unverified. Do not report smooth motion from a duration declaration or reduced-motion success from the presence of a media query alone. If a preference cannot be activated with available tools, report the code-level finding as inferred.

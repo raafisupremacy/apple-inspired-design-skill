@@ -66,7 +66,7 @@ After reading the complete set, use these references as the primary decision gui
 - Choose selection controls by purpose and cardinality before styling them. Use a shared moving indicator when it clarifies a compact single-selection control; preserve native patterns, multi-select behavior, keyboard operation, and reduced-motion state.
 - Honor reduced motion, text scaling, contrast settings, keyboard, touch, screen readers, and localization.
 - Treat user-provided assets as authoritative content. Adapt presentation when needed, but do not silently replace or materially alter them.
-- Audit the whole visual system for repeated templates, typography availability, surface/depth consistency, story arc, content truth, and cross-state synchronization before polishing individual components.
+- Audit the whole visual system for repeated templates, typography availability, icon consistency, surface/depth consistency, story arc, content truth, and cross-state synchronization before polishing individual components. When a live UI is available, inspect beyond the user's screenshot selections.
 - Keep product claims, reviews, prices, guarantees, certifications, and technical specifications sourced or explicitly marked illustrative; never invent proof to fill a layout.
 - Include relevant loading, empty, error, offline, disabled, permission, and success states.
 - Preserve product personality through restrained, intentional choices instead of making every product look like Apple.

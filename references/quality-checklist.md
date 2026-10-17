@@ -46,3 +46,8 @@ Do not mark a screen complete from a screenshot alone when interaction, accessib
 - [ ] Compact navigation preserves access; important labels, actions, and selected options remain discoverable.
 - [ ] Related transitions form a coherent sequence, including dismissal, focus, and reduced motion.
 - [ ] Findings stay within the requested design scope; backend and business-rule correctness are not inferred from UI inspection.
+
+- [ ] A live audit includes independent inspection beyond user-supplied screenshots and labels unobserved states.
+- [ ] Interface icons form a coherent family; emoji are intentional content or brand expression, not default control assets.
+- [ ] Headlines and action placement remain appropriate after reflow, including intermediate widths and long overlays.
+- [ ] Reduced motion preserves closed/open visibility and selected geometry; runtime behavior is distinguished from CSS inference.

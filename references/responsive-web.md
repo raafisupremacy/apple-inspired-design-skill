@@ -39,3 +39,9 @@ The essential page must work without JavaScript-heavy motion, unsupported browse
 For narrow controls, inspect the real labels and target sizes, not just page overflow. Adapt navigation priority, label wording, and control composition when wrapping makes the interface harder to operate. Keep accessible names meaningful after shortening visible labels. Aim for comfortable touch targets (commonly about 44 CSS px on web); evaluate spacing and input context rather than confusing that comfort target with every platform's conformance minimum.
 
 When navigation no longer fits, preserve access through an appropriate compact pattern rather than simply hiding destinations. Maintain a legible brand mark and prioritize frequently needed actions. For horizontally scrollable controls, make additional options discoverable and keep the focused or selected option reachable. Choose scrolling, wrapping, or another control based on label lengths and task; a row that technically fits is not proof of a usable composition.
+
+## Recomposition and reachability
+
+Inspect intermediate widths and the points immediately before and after navigation or column changes, not only phone and desktop endpoints. Reassess long headlines, media placement, supporting copy, and competing actions after reflow. Content below the first viewport is not automatically a defect; judge whether the opening view communicates the task and whether scrolling remains clear and worthwhile.
+
+For long dialogs, sheets, and detail views, check that users can discover and reach the primary action and dismissal without losing context. Choose an in-flow action, a reserved sticky action region, or a full-page presentation according to task length and platform. Do not impose sticky buttons everywhere; they must not cover content, keyboard focus, or required information. Account for safe areas and the on-screen keyboard on touch devices.
