@@ -12,6 +12,8 @@ npx skills add raafisupremacy/apple-inspired-design-skill
 
 After installation, ask your coding agent to use `apple-inspired-design` for UI advice, design specifications, visual reviews, or implementation work.
 
+Restart or refresh the agent after installation if it does not discover the skill immediately. To update it, run the same install command again and accept the installer’s update prompt. To remove it, use the agent’s skill manager or delete this skill’s installed folder from that manager’s skills directory; do not delete the project being designed.
+
 ## Use it
 
 After installation, use the skill by asking your coding agent in normal language. The prompt below is an example of a **Review** request: it tells the agent to inspect an existing mobile checkout screen, keep the current brand, and organize the findings as What, Why, Fix, and Evidence.
@@ -51,6 +53,8 @@ The available modes are:
 
 For the best result, provide real content and user-provided images when available. The agent should preserve those assets, ask only for missing constraints that affect the decision, and state what it could not observe or verify.
 
+If the agent produces a generic result, add the missing context rather than repeating “make it more Apple”: name the primary user task, platform and input method, current project path, real content shape, brand constraints, and the outcome you want. For an implementation request, explicitly authorize code changes in the selected project.
+
 ## What the package contains
 
 - `SKILL.md`: entry point, safety boundaries, modes, and routing
@@ -73,3 +77,11 @@ The skill is a design system and agent workflow, not a device lab or automated v
 The repository contains guidance, static tokens, and local standard-library validators only. It has no install hooks, runtime services, telemetry, network client, credential handling, or bundled executable. See [SECURITY.md](SECURITY.md) for the trust boundaries and audit notes.
 
 The skill is Apple-inspired guidance, not Apple’s official design system and not a guarantee of WCAG conformance, device behavior, performance, or visual similarity.
+
+## Troubleshooting
+
+- **The skill is not detected:** restart or refresh the agent, then confirm the installer placed a folder named `apple-inspired-design` containing `SKILL.md` at its root.
+- **The agent gives only generic advice:** provide the actual screen, code, screenshot, or project path and name the user task; ask for Review or Implement mode explicitly.
+- **The output ignores the brand:** provide the existing logo, colors, type, copy tone, and user-supplied media, then ask the agent to preserve them.
+- **Motion feels wrong:** specify the interaction, interruption behavior, target platform, and reduced-motion requirement; the skill does not claim Apple’s private timing values.
+- **A project needs runtime proof:** ask for proportionate browser/device/accessibility/performance verification separately; this package is a design and agent-guidance skill, not an automated test lab.
