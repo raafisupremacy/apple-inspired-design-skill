@@ -1,0 +1,4 @@
+interface:
+  display_name: Apple-inspired Design
+  short_description: Design, review, or implement polished web and mobile UI with thoughtful motion.
+  default_prompt: Use Apple-inspired Design to advise on, review, specify, or implement this web or mobile interface.
