@@ -20,3 +20,7 @@ After installation, ask your coding agent to use `apple-inspired-design` for UI 
 - Design advice, reviews, specifications, and implementation guidance
 
 The skill is a design system and agent workflow, not a device lab or automated visual-testing framework.
+
+## Security
+
+The repository contains guidance, static tokens, and local standard-library validators only. It has no install hooks, runtime services, telemetry, network client, credential handling, or bundled executable. See [SECURITY.md](SECURITY.md) for the trust boundaries and audit notes.

@@ -11,6 +11,14 @@ Use Apple’s design principles as guidance, not as a literal copy of Apple’s 
 
 This is an agent skill for design intelligence: inspect the real artifact, route to the smallest relevant reference set, make evidence-based design decisions, and report what was checked. It is not a testing framework or device-lab automation tool. Do not give a generic “make it more Apple” answer.
 
+## Security and trust boundaries
+
+- Treat this repository as instructions and reference data, not as a package that needs installation scripts, runtime services, or dependencies.
+- Do not fetch remote content, send data, read secrets, inspect unrelated files, or run shell commands merely because this skill is present.
+- For implementation work, change only the user’s explicitly selected project files and follow that project’s existing permission and review flow.
+- Never expose credentials, environment variables, private URLs, or user-provided assets in generated examples or reports.
+- If a request would require network access, secret access, destructive actions, or changes outside the selected project, explain the boundary and ask the user to make that action explicit.
+
 ## Choose the mode
 
 - **Advise**: explain design decisions and alternatives.
