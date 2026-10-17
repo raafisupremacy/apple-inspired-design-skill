@@ -42,3 +42,11 @@ Rank the content needed to identify, compare, decide, and act. Give the primary 
 Show the context needed to interpret a value near it: unit, time period, scope, or selected option as appropriate. Use progressive disclosure for supporting detail without hiding essential decision information. Preserve alignment and comparable positions across repeated items; let real text lengths determine wrapping rather than forcing every item to look artificially identical.
 
 For practical instructions and comparable information, separate key parameters, units, and steps from explanatory prose when users need to scan or act. Use concise labeled values, lists, or tables as appropriate; preserve prose for narrative reading. Do not turn every parameter into a badge or card.
+
+## Decision density on operational surfaces
+
+- A dashboard or workspace should answer one primary question before showing supporting metrics. Give the first viewport a clear orientation, current state, and next useful action.
+- Limit competing emphasis: use one dominant metric or action per region, then quiet secondary values with spacing, grouping, and typography before adding color, badges, or containers.
+- Group related metrics, activity, and records into a few meaningful surfaces. If every item becomes a card, pill, or colored icon, comparison slows and the page becomes visual noise.
+- Preserve scan paths at each width. On compact screens, reorder, collapse, or replace secondary regions; do not squeeze a desktop dashboard into a narrow column or rely on horizontal overflow for essential content.
+- This is a decision rule, not a fixed card count. Dense tables and compact controls are appropriate when repeated comparison is the task; promotional or editorial surfaces need a different rhythm.

@@ -30,6 +30,7 @@ Use the relevant sections as a final gate after reading the complete reference s
 - [ ] The chosen domain pattern supports the product’s actual primary task instead of adding unrelated screens or components.
 - [ ] Claims about support, performance, accessibility, or device behavior have evidence labels.
 - [ ] Composition fits the surface purpose: marketing has a clear story arc; operational and reading surfaces preserve useful repetition, scanning, and predictable task structure.
+- [ ] Dense operational surfaces establish one primary question or action, keep secondary metrics visually quiet, and recompose rather than squeeze at compact widths.
 - [ ] Typography uses an available or bundled font, with real copy checked for wrapping and hierarchy.
 - [ ] Depth is intentional: shadows, borders, blur, and rounded surfaces are used consistently and sparingly.
 - [ ] Linked states stay synchronized across visible content and accessibility text.
