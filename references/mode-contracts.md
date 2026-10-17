@@ -1,5 +1,7 @@
 # Mode contracts
 
+Every mode must identify the platform and primary user task, state assumptions that affect the decision, and separate observed or measured evidence from inference and unverified limits. Keep the response proportional to the request; completeness means covering the decisions that can change the outcome, not listing every possible component.
+
 ## Advise
 
 Return the recommended decision first, the reason tied to the user task second, and alternatives only when they change an important trade-off. Mention assumptions that affect the recommendation.

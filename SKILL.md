@@ -35,9 +35,9 @@ Before giving advice, reviewing an artifact, designing a flow, or editing code, 
 
 After reading all references, apply the sections that directly affect the task first and use the rest as constraints and cross-checks. If the user asks for a short answer, keep the output short but still use the complete guidance internally.
 
-## Route by platform
+## Apply the references by task
 
-Read only the relevant references:
+After reading the complete set, use these references as the primary decision guides:
 
 - [Core principles](references/core-principles.md) for every task.
 - [Motion](references/motion.md) whenever an interaction, transition, scroll effect, or animation is involved.

@@ -1,6 +1,6 @@
 # Quality checklist
 
-Use the smallest relevant subset for the task.
+Use the relevant sections as a final gate after reading the complete reference set. Do not report an unchecked item as passing.
 
 ## Responsive web
 
