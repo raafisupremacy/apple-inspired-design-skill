@@ -72,6 +72,7 @@ After reading the complete set, use these references as the primary decision gui
 - Preserve product personality through restrained, intentional choices instead of making every product look like Apple.
 - Treat domain recipes as optional starting points. For products outside them, use the custom-domain process in `references/design-reasoning.md` rather than forcing a familiar template.
 - When implementation or review makes it relevant, do a lightweight verification pass at realistic sizes and with the project’s actual data shape; do not invent a testing harness unless requested.
+- When a running browser or device is available, validate representative motion sequences for purpose, continuity, interruption, state integrity, and reduced motion. Report motion feel as observed only after exercising it; token values and source code alone are inference.
 - When tokens are added or changed, run `scripts/validate_tokens.py` before claiming they are ready. A passing token validator proves only the checks implemented by that script; it never proves that the complete skill, UI, accessibility behavior, motion, responsive layout, or theme states were applied.
 
 ## Review scope

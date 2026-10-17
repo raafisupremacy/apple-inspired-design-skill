@@ -35,4 +35,17 @@ Lighthouse, automated accessibility checks, a design-token validator, or a succe
 
 Verification is scoped evidence, not a certificate. A successful build or token check cannot establish that the full design guidance was applied. Do not infer runtime behavior from a CSS declaration, ARIA attribute, transition duration, or code path alone. Confirm interaction by exercising it; confirm responsive behavior at the relevant viewport; confirm reduced motion with the preference active; and report the exact scope of each check.
 
+## Runtime motion and feel
+
+When a running browser or device is available, validate motion as an interaction sequence rather than from timing values alone. For each representative transition or gesture, record:
+
+- **Purpose:** what state, relationship, hierarchy, or direct manipulation the movement explains.
+- **Continuity:** whether the moving content, selection surface, or shared element follows the user’s action without a jump, flash, or unexplained change of identity.
+- **Physical response:** whether acceleration, deceleration, overshoot, and settling feel proportionate to the distance, surface, and input; do not claim Apple’s private curve or spring values.
+- **Interruption:** whether a second tap, reverse drag, back action, dismissal, or navigation change cancels or redirects the current motion cleanly.
+- **State integrity:** whether focus, selected state, open/closed visibility, scroll position, and content remain correct when the motion is interrupted or completed.
+- **Reduced motion:** whether travel, bounce, shimmer, parallax, and count-up effects become an immediate or short opacity/state change while preserving visibility and operability.
+
+Exercise the interaction at its intended viewport and input method, then repeat with slow and rapid input where interruption matters. Label the result **Observed** only after running it; label timing or source inspection **Inferred**; label unavailable browser/device interaction **Unverified**. A static duration, easing token, screenshot, or successful build is not evidence of motion feel.
+
 Use the narrowest accurate verb: “declared” for source, “measured” for a calculation, “observed” for runtime, and “verified” only when the stated acceptance condition was actually checked.

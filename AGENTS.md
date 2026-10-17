@@ -24,6 +24,7 @@ If the request is ambiguous, ask only for information that changes the design de
 - Use `references/motion.md` for any animation or gesture request.
 - Use `references/user-assets.md` for supplied media and keep original assets intact.
 - Run `scripts/validate_tokens.py` after token changes and `scripts/check_references.py` after routing changes.
+- When a running UI is available, use `references/compatibility-testing.md` to validate representative motion feel and report runtime observations separately from source inference.
 - Do not claim Apple endorsement, device testing, contrast validation, or performance results without evidence.
 - Do not enter Enforce mode unless the user explicitly asks for it.
 - Treat domain recipes as optional starting points; use the custom-domain reasoning path when none fits.

@@ -76,9 +76,9 @@ Updating the installed skill updates the agent's guidance; it does not automatic
 
 Reviews focus on UI, UX, motion, design systems, responsive/platform adaptation, and interface accessibility. Business logic, backend, database, and payment/shipping integration audits are separate tasks. Real-project reviews used to improve the skill extract reusable design criteria rather than product-specific requirements.
 
-The skill is a design system and agent workflow, not a device lab or automated visual-testing framework.
+The skill is a design system and agent workflow, not a bundled device lab or automated visual-testing framework. When a browser or device is available, the agent can perform a scoped runtime review and report observed motion feel, responsive behavior, focus, and state transitions. Without a running artifact, those results remain unverified.
 
-The bundled token files are starter values, not a complete project theme. Keep `tokens.json` and `tokens.css` synchronized for directly mapped values, then run the validators. A passing validator covers file links and token structure/parity only; it does not prove contrast for every rendered state, responsive behavior, accessibility, or motion quality.
+The bundled token files are starter values, not a complete project theme. Keep `tokens.json` and `tokens.css` synchronized for directly mapped values, then run the validators. A passing validator covers file links and token structure/parity only; it does not prove contrast for every rendered state, responsive behavior, accessibility, or motion feel. For motion validation, provide a running browser or device and ask the agent to inspect representative interactions using the evidence labels in `references/compatibility-testing.md`.
 
 ## Security
 
