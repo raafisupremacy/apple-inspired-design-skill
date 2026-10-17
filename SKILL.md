@@ -74,6 +74,10 @@ After reading the complete set, use these references as the primary decision gui
 - When implementation or review makes it relevant, do a lightweight verification pass at realistic sizes and with the project’s actual data shape; do not invent a testing harness unless requested.
 - When tokens are added or changed, run `scripts/validate_tokens.py` before claiming they are ready.
 
+## Review scope
+
+Review scope is UI, UX, motion, design systems, responsive/platform adaptation, and interface accessibility. Inspect code or behavior only as needed to explain those findings. Do not expand a design review into business-rule, transaction-calculation, backend, database, security, or third-party integration auditing unless the user separately requests it. Visible state, focus, feedback, and navigation remain in scope; diagnose their presentation without claiming the underlying service works or fails.
+
 ## Review output
 
 For a review, prioritize findings by user impact. Each finding contains:

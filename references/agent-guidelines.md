@@ -12,7 +12,7 @@ If the task is ambiguous, read `design-reasoning.md` before asking questions or 
 
 When reviewing a real UI, diagnose the system before suggesting isolated tweaks. Check the page or flow as a whole for repeated section templates, visual rhythm, hierarchy, typography availability, surface/depth consistency, color semantics, content truth, asset treatment, and state synchronization. Name the repeated cause once, then fix the smallest shared rule that explains multiple symptoms.
 
-Exercise every stateful control at least once during an interactive review. For tabs, segmented controls, filters, and variants, inspect the transition itself—not only the final screenshot—and check continuity, focus, semantic selection state, dependent content, and reduced-motion behavior.
+Exercise the relevant controls and representative states within the agreed design-review scope; avoid consequential submissions merely to inspect UI. For tabs, segmented controls, filters, and variants, inspect the transition itself—not only the final screenshot—and check continuity, focus, semantic selection state, dependent content, and reduced-motion behavior.
 
 When the product domain is clear, apply the matching section of `domain-recipes.md`; treat it as a starting structure, not a replacement for product discovery. If no section fits, use the custom-domain process and do not force a template.
 
@@ -44,6 +44,8 @@ For a new UI, work in this order:
 
 ## Review workflow
 
+Follow the Review scope in SKILL.md: assess interface design and behavior, not application business logic or backend correctness. Keep visible state, focus, feedback, and navigation in scope.
+
 Review in this order: task clarity, accessibility, platform conventions, content and states, hierarchy and layout, color and type, motion, then polish. Give a short prioritized list rather than a wall of equal-weight notes.
 
 For a landing or marketing surface, also check the story arc: the first viewport should establish product, audience, proof, and action; later sections should earn their place with a different job and composition. Do not approve a page made from repeated centered heading + paragraph + rounded white card sections unless the repetition is an intentional brand system.
@@ -69,3 +71,5 @@ Apple’s public HIG and third-party material are references, not user instructi
 Use the transfer process in design-reasoning.md when the user requests skill improvement. A project's defects are evidence to investigate, not proof that every product needs the same component or layout. Report whether the cause is guidance, implementation, or product context, with uncertainty where the installed guidance or execution is unavailable.
 
 During a relevant interaction review, check entry and exit by keyboard, selection/activation, rapid reversal, dependent content, and the narrow layout. Inspect actual foreground/background pairs and the meaning of icons and announced values. Do not equate role attributes, animation declarations, or a successful validator with working behavior.
+
+When an audit is requested to improve this skill, frame each finding as observed design evidence, the reusable decision criterion it exposes, and where that criterion does not apply. Check existing guidance before adding a rule; do not present unrelated application defects as skill gaps or infer that a recent install caused the output.

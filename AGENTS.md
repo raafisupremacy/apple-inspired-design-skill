@@ -30,3 +30,5 @@ If the request is ambiguous, ask only for information that changes the design de
 - Do not claim the result is official Apple design, device-tested, performance-tested, or accessibility-certified without evidence.
 
 - For authorized skill improvements based on real projects, follow the transfer process in references/design-reasoning.md; separate guidance defects, implementation failures, and project-specific choices.
+
+- Keep design audits within the Review scope in SKILL.md. For skill-development audits, connect observed UI evidence to a reusable design criterion and its limits, not an application-logic defect list.

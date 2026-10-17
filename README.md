@@ -74,6 +74,8 @@ The skill supports products beyond the included recipes: CRM, commerce, advertis
 
 Updating the installed skill updates the agent's guidance; it does not automatically rewrite existing project code. Ask the agent to apply the updated skill to the intended design or implementation task.
 
+Reviews focus on UI, UX, motion, design systems, responsive/platform adaptation, and interface accessibility. Business logic, backend, database, and payment/shipping integration audits are separate tasks. Real-project reviews used to improve the skill extract reusable design criteria rather than product-specific requirements.
+
 The skill is a design system and agent workflow, not a device lab or automated visual-testing framework.
 
 ## Security
