@@ -14,14 +14,34 @@ After installation, ask your coding agent to use `apple-inspired-design` for UI 
 
 ## Use it
 
-Give the agent the product task, target platform, existing artifact or project path, brand constraints, and the requested mode when you know them:
+After installation, use the skill by asking your coding agent in normal language. The prompt below is an example of a **Review** request: it tells the agent to inspect an existing mobile checkout screen, keep the current brand, and organize the findings as What, Why, Fix, and Evidence.
 
 ```text
 Use apple-inspired-design in Review mode. Audit this mobile checkout screen for hierarchy,
 accessibility, states, and motion. Keep the existing brand and report What / Why / Fix / Evidence.
 ```
 
-The skill can also infer the mode:
+You can attach a screenshot, provide a project path, or point the agent at the existing UI code. Include the product task, target platform, real content, brand constraints, and requested outcome when those details matter. The mode is optional; the agent can infer it from your request.
+
+Examples:
+
+```text
+Advise me on whether this web dashboard should use a table or grouped list for reviewing invoices.
+Keep the existing blue brand and explain the trade-off.
+```
+
+```text
+Design an iOS and Android onboarding flow for a budgeting app. Define the hierarchy, states,
+tokens, responsive/platform differences, accessibility, and purposeful motion.
+```
+
+```text
+Implement this responsive product page in the project’s existing React stack. Use the supplied
+images as-is, preserve the current data flow, include loading and error states, and report the
+files changed and checks performed.
+```
+
+The available modes are:
 
 - **Advise** for a design decision or trade-off
 - **Review** for an existing screen, flow, screenshot, or codebase
