@@ -75,3 +75,9 @@ During a relevant interaction review, check entry and exit by keyboard, selectio
 When an audit is requested to improve this skill, frame each finding as observed design evidence, the reusable decision criterion it exposes, and where that criterion does not apply. Check existing guidance before adding a rule; do not present unrelated application defects as skill gaps or infer that a recent install caused the output.
 
 For independent visual review, inspect page-level composition and representative components before focusing on reported defects. Cover narrow, intermediate, and wide layouts, relevant themes, and overlay entry/exit within the requested scope. Track what was observed live, supplied as a screenshot, inferred from CSS, or left unverified. Do not report smooth motion from a duration declaration or reduced-motion success from the presence of a media query alone. If a preference cannot be activated with available tools, report the code-level finding as inferred.
+
+## Application claim protocol
+
+If a user asks whether the skill was used, answer with evidence rather than reassurance. Separate reading guidance from applying it and applying it from verifying the result. A script result is scoped to that script: `validate_tokens.py` does not prove icon consistency, hierarchy, keyboard behavior, responsive composition, motion feel, reduced-motion behavior, or all theme contrast pairs.
+
+Before claiming broad application, record the references consulted, source inspected, runtime states and viewports exercised, measurements and their scope, and remaining unverified claims. Use “the implementation follows this guidance in the inspected area” when scope is partial. Treat plausible project content as supplied or illustrative unless its source and truth are known.

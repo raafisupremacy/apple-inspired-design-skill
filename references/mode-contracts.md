@@ -21,3 +21,7 @@ Inspect the existing project first. Reuse its components and dependencies. Make 
 ## Enforce
 
 Use only after explicit request. Establish the scope and pass criteria, inspect the artifact, fix only in-scope issues, and re-review. Stop after a bounded number of cycles or when progress requires product decisions. Never imply certification or App Store/WCAG conformance without the required evidence.
+
+## Claim discipline
+
+A complete implementation or review report distinguishes **Applied** (a documented change exists), **Observed** (the running artifact showed it), **Measured** (a calculation produced it), **Inferred** (source suggests it but it was not run), and **Unverified** (evidence is unavailable). Do not turn a validator pass into a whole-skill pass, or plausible data into verified production content. When asked whether the skill was used, answer the evidence matrix and limits before any summary.

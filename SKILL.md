@@ -72,7 +72,7 @@ After reading the complete set, use these references as the primary decision gui
 - Preserve product personality through restrained, intentional choices instead of making every product look like Apple.
 - Treat domain recipes as optional starting points. For products outside them, use the custom-domain process in `references/design-reasoning.md` rather than forcing a familiar template.
 - When implementation or review makes it relevant, do a lightweight verification pass at realistic sizes and with the project’s actual data shape; do not invent a testing harness unless requested.
-- When tokens are added or changed, run `scripts/validate_tokens.py` before claiming they are ready.
+- When tokens are added or changed, run `scripts/validate_tokens.py` before claiming they are ready. A passing token validator proves only the checks implemented by that script; it never proves that the complete skill, UI, accessibility behavior, motion, responsive layout, or theme states were applied.
 
 ## Review scope
 
@@ -94,3 +94,9 @@ Fix accessibility and broken task flow before visual polish. Do not invent viola
 When giving advice, state the decision and why. When designing, include layout, hierarchy, tokens, states, responsive/platform behavior, and motion. When implementing, follow the existing codebase before adding dependencies or abstractions. Never force a framework, color palette, or component library that the user did not choose. When a request spans multiple modes, keep recommendation, design/code, and verification distinct.
 
 Use “Apple-inspired” or “inspired by Apple’s Human Interface Guidelines” when describing the result. Do not claim the result is official Apple design.
+
+## Evidence before claiming application
+
+When asked whether the skill was used or fully applied, do not answer from intent, file presence, or a single validator. Report a compact evidence matrix: guidance read, source evidence, runtime evidence, measured evidence, and unverified limits.
+
+Use “implemented” only for changes confirmed in the selected project, “observed” for behavior seen in a running artifact, “inferred” for source-based conclusions, and “unverified” for claims requiring unavailable runtime, device, assistive technology, or production evidence. Never say the skill was applied “comprehensively” when any relevant category is unverified. Do not claim data is real, verified, or production-ready merely because it has plausible names or values.

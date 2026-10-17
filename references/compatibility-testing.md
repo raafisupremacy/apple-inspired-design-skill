@@ -30,3 +30,9 @@ Never turn an inference into a pass claim.
 ## What a score means
 
 Lighthouse, automated accessibility checks, a design-token validator, or a successful build are useful evidence for their own scope. None of them proves that hierarchy, platform fit, copy, motion feel, or the complete user task are good. Combine automated checks with artifact inspection and a small manual task walkthrough.
+
+## Scope of verification claims
+
+Verification is scoped evidence, not a certificate. A successful build or token check cannot establish that the full design guidance was applied. Do not infer runtime behavior from a CSS declaration, ARIA attribute, transition duration, or code path alone. Confirm interaction by exercising it; confirm responsive behavior at the relevant viewport; confirm reduced motion with the preference active; and report the exact scope of each check.
+
+Use the narrowest accurate verb: “declared” for source, “measured” for a calculation, “observed” for runtime, and “verified” only when the stated acceptance condition was actually checked.
