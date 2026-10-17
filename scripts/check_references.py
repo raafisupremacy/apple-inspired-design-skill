@@ -1,4 +1,4 @@
-"""Check that every local reference linked from the skill exists."""
+"""Check that every local Markdown reference in the skill exists."""
 
 from pathlib import Path
 import re
@@ -6,12 +6,22 @@ import re
 
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
-    text = (root / "SKILL.md").read_text(encoding="utf-8")
-    paths = re.findall(r"\]\((references/[^)]+)\)", text)
-    missing = [path for path in paths if not (root / path).is_file()]
+    missing = []
+    checked = 0
+    for document in root.rglob("*.md"):
+        if ".git" in document.parts:
+            continue
+        text = document.read_text(encoding="utf-8")
+        for target in re.findall(r"\]\(([^)]+)\)", text):
+            target = target.split("#", 1)[0].strip()
+            if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target):
+                continue
+            checked += 1
+            if not (document.parent / target).is_file():
+                missing.append(f"{document.relative_to(root)} -> {target}")
     if missing:
         raise SystemExit("missing references: " + ", ".join(missing))
-    print(f"references valid; checked {len(paths)} local links")
+    print(f"references valid; checked {checked} local links")
 
 
 if __name__ == "__main__":

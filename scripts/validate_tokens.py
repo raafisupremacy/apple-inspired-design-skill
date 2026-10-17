@@ -14,6 +14,17 @@ REQUIRED = {
 MOTION_REQUIRED = {"fastMs", "baseMs", "slowMs", "maxMs", "reducedMs"}
 
 
+def normalize(value: str) -> str:
+    return re.sub(r"\s+", "", value).lower()
+
+
+def css_variables(css: str) -> dict[str, str]:
+    # Theme overrides are checked separately by the design guidance; parity is
+    # for the framework-neutral light starter values only.
+    base = css.split("@media (prefers-color-scheme: dark)", 1)[0]
+    return {name: value.strip() for name, value in re.findall(r"--([a-z0-9-]+)\s*:\s*([^;]+);", base)}
+
+
 def luminance(hex_color: str) -> float:
     value = hex_color.lstrip("#")
     if len(value) != 6 or not re.fullmatch(r"[0-9a-fA-F]{6}", value):
@@ -30,7 +41,8 @@ def contrast(first: str, second: str) -> float:
 
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
-    colors = json.loads((root / "assets" / "tokens.json").read_text(encoding="utf-8"))["color"]
+    tokens = json.loads((root / "assets" / "tokens.json").read_text(encoding="utf-8"))
+    colors = tokens["color"]
     missing = REQUIRED - colors.keys()
     if missing:
         raise SystemExit(f"missing color tokens: {', '.join(sorted(missing))}")
@@ -38,7 +50,7 @@ def main() -> int:
         if not isinstance(value, str):
             raise SystemExit(f"color token is not a string: {name}")
         luminance(value)
-    motion = json.loads((root / "assets" / "tokens.json").read_text(encoding="utf-8"))["motion"]
+    motion = tokens["motion"]
     missing_motion = MOTION_REQUIRED - motion.keys()
     if missing_motion:
         raise SystemExit(f"missing motion tokens: {', '.join(sorted(missing_motion))}")
@@ -49,6 +61,7 @@ def main() -> int:
     if motion["reducedMs"] >= motion["baseMs"]:
         raise SystemExit("reduced motion duration must be shorter than base motion")
     css = (root / "assets" / "tokens.css").read_text(encoding="utf-8")
+    variables = css_variables(css)
     css_colors = set(re.findall(r"--color-([a-z-]+):", css))
     expected_css_colors = {
         re.sub(r"([A-Z])", lambda match: "-" + match.group(1).lower(), name)
@@ -70,6 +83,39 @@ def main() -> int:
     for name in ("motion-fast", "motion-base", "motion-slow", "motion-max", "motion-reduced"):
         if f"--{name}:" not in css:
             raise SystemExit(f"missing CSS motion token: {name}")
+
+    expected = {
+        **{f"color-{re.sub(r'([A-Z])', lambda match: '-' + match.group(1).lower(), name)}": value
+           for name, value in colors.items()},
+        "radius-control": f"{tokens['radius']['control']}px",
+        "radius-panel": f"{tokens['radius']['panel']}px",
+        "radius-pill": f"{tokens['radius']['pill']}px",
+    }
+    expected.update({f"space-{name}": f"{value}px" for name, value in tokens["spacing"].items()})
+    expected.update({
+        "text-body": f"{tokens['typography']['bodyPx']}px",
+        "text-caption": f"{tokens['typography']['captionPx']}px",
+        "text-title": f"{tokens['typography']['titlePx']}px",
+        "text-hero": f"{tokens['typography']['heroPx']}px",
+        "leading-body": str(tokens['typography']['lineHeightBody']),
+        "leading-display": str(tokens['typography']['lineHeightDisplay']),
+        "content-max": f"{tokens['layout']['contentMaxPx']}px",
+        "reading-max": f"{tokens['layout']['readingMaxPx']}px",
+        "page-padding": f"{tokens['layout']['pagePaddingPx']['wide']}px",
+        "elevation-floating": tokens["elevation"]["floating"],
+        "motion-fast": f"{tokens['motion']['fastMs']}ms",
+        "motion-base": f"{tokens['motion']['baseMs']}ms",
+        "motion-slow": f"{tokens['motion']['slowMs']}ms",
+        "motion-max": f"{tokens['motion']['maxMs']}ms",
+        "motion-reduced": f"{tokens['motion']['reducedMs']}ms",
+        "ease-enter": tokens["motion"]["easing"]["enter"],
+        "ease-exit": tokens["motion"]["easing"]["exit"],
+        "ease-linear": tokens["motion"]["easing"]["linear"],
+    })
+    drift = [name for name, value in expected.items()
+             if name not in variables or normalize(variables[name]) != normalize(value)]
+    if drift:
+        raise SystemExit("CSS/JSON token drift: " + ", ".join(sorted(drift)))
     ratio = contrast(colors["text"], colors["bg"])
     if ratio < 4.5:
         raise SystemExit(f"primary text contrast is {ratio:.2f}:1; need at least 4.5:1")

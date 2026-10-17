@@ -61,7 +61,7 @@ If the agent produces a generic result, add the missing context rather than repe
 - `AGENTS.md`: integration workflow for agent runtimes
 - `references/`: focused web, mobile, motion, accessibility, content, brand, and reasoning guidance
 - `assets/`: framework-neutral starter tokens in CSS and JSON
-- `scripts/`: local validators with no third-party dependencies
+- `scripts/`: local validators with no third-party dependencies. `check_references.py` checks all Markdown links; `validate_tokens.py` checks starter color, motion, and directly mapped CSS/JSON token parity.
 
 ## Scope
 
@@ -77,6 +77,8 @@ Updating the installed skill updates the agent's guidance; it does not automatic
 Reviews focus on UI, UX, motion, design systems, responsive/platform adaptation, and interface accessibility. Business logic, backend, database, and payment/shipping integration audits are separate tasks. Real-project reviews used to improve the skill extract reusable design criteria rather than product-specific requirements.
 
 The skill is a design system and agent workflow, not a device lab or automated visual-testing framework.
+
+The bundled token files are starter values, not a complete project theme. Keep `tokens.json` and `tokens.css` synchronized for directly mapped values, then run the validators. A passing validator covers file links and token structure/parity only; it does not prove contrast for every rendered state, responsive behavior, accessibility, or motion quality.
 
 ## Security
 
