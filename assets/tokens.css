@@ -1,0 +1,67 @@
+:root {
+  --color-bg: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-separator: #e5e5ea;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #86868b;
+  --color-text-inverse: #ffffff;
+  --color-accent: #0071e3;
+  --color-accent-hover: #0077ed;
+  --color-accent-pressed: #006acf;
+  --color-accent-soft: #e8f1fd;
+  --color-focus: #0071e3;
+  --color-success: #1d7a3c;
+  --color-warning: #a15c00;
+  --color-danger: #c4271b;
+  --radius-control: 12px;
+  --radius-panel: 20px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 480ms;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+  --text-body: 17px;
+  --text-caption: 14px;
+  --text-title: 40px;
+  --text-hero: 56px;
+  --leading-body: 1.45;
+  --leading-display: 1.1;
+  --content-max: 1200px;
+  --reading-max: 680px;
+  --page-padding: 48px;
+  --elevation-floating: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #000000;
+    --color-surface: #1c1c1e;
+    --color-surface-elevated: #2c2c2e;
+    --color-separator: #38383a;
+    --color-text: #f5f5f7;
+    --color-text-secondary: #a1a1a6;
+    --color-text-tertiary: #8e8e93;
+    --color-text-inverse: #000000;
+    --color-accent: #409cff;
+    --color-accent-hover: #64b5ff;
+    --color-accent-pressed: #2997ff;
+    --color-accent-soft: #0a2a4f;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 1ms;
+    --motion-base: 1ms;
+    --motion-slow: 1ms;
+  }
+}
