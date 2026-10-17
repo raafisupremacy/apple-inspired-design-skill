@@ -24,6 +24,7 @@ Use these as decision patterns, not a mandatory component library.
 - Prefer one unified panel with separators for sibling settings or rows over many disconnected cards.
 - Use sheets and dialogs for focused temporary work; keep escape, backdrop, back, and focus restoration predictable.
 - Use segmented controls only for a small set of mutually exclusive views.
+- For segmented controls, tabs, filters, and variant pickers, use one shared selected surface that moves between options; keep labels stable and expose the state with the platform’s semantic selection API.
 - Use a status treatment with text and a non-color cue.
 - Use icons when they clarify an action or status; do not place an icon beside every heading.
 - Use a signature element sparingly: one distinctive visual or motion idea can give a product a point of view.

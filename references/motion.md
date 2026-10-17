@@ -63,6 +63,29 @@ Use this calibration order:
 
 ## Platform patterns
 
+### Segmented controls and selection surfaces
+
+For a small set of mutually exclusive views, variants, or modes, treat the selected background as one shared surface that moves between options. The control is a single stateful component, not two unrelated buttons that each receive a new fill.
+
+- Keep the option labels and icons stationary; move or resize one selection layer using measured bounds, a layout animation, or a transform.
+- Animate the selection layer with a short spring or calibrated ease-out (roughly `180–280ms` for a compact control). Let the label color and icon treatment follow with a shorter fade or color transition.
+- Preserve the control’s outer track, hit targets, and focus ring while the inner selection surface moves. Do not animate width from guessed text lengths.
+- Expose the state semantically with `aria-selected` in a tablist, `aria-pressed` for a toggle group, or the native platform equivalent. Arrow keys, touch, pointer, and programmatic selection must resolve to the same state machine.
+- When the content panel changes, update selection, panel content, accessible name, and any dependent summary from one source of truth. Do not leave the old panel or stale label visible during the transition.
+- Under reduced motion, keep the selected surface in the new position immediately or use a short fade; never hide the selected state.
+
+Framework-neutral shape:
+
+```text
+selection = { key, bounds }
+onSelect(next):
+  update state and content immediately
+  animate shared selection layer from previous bounds to next bounds
+  fade or color-transition labels only as supporting feedback
+```
+
+Use this pattern for tabs, temperature modes, product variants, filters, view density, and appearance choices. Do not use it for navigation between unrelated destinations or for actions that are not mutually exclusive.
+
 ### Navigation and shared content
 
 - Push detail on compact mobile layouts; use pane replacement or a restrained cross-fade on wide layouts.

@@ -12,6 +12,8 @@ If the task is ambiguous, read `design-reasoning.md` before asking questions or 
 
 When reviewing a real UI, diagnose the system before suggesting isolated tweaks. Check the page or flow as a whole for repeated section templates, visual rhythm, hierarchy, typography availability, surface/depth consistency, color semantics, content truth, asset treatment, and state synchronization. Name the repeated cause once, then fix the smallest shared rule that explains multiple symptoms.
 
+Exercise every stateful control at least once during an interactive review. For tabs, segmented controls, filters, and variants, inspect the transition itself—not only the final screenshot—and check continuity, focus, semantic selection state, dependent content, and reduced-motion behavior.
+
 When the product domain is clear, apply the matching section of `domain-recipes.md`; treat it as a starting structure, not a replacement for product discovery. If no section fits, use the custom-domain process and do not force a template.
 
 For responsive web work, apply `responsive-web.md` and use `quality-checklist.md` as a lightweight design gate. Apply `compatibility-testing.md` whenever the artifact, requested behavior, or evidence includes browser support, device behavior, performance, or production readiness. Treat performance scores as evidence for performance only, not as proof that the design is good.

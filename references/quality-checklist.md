@@ -33,6 +33,7 @@ Use the relevant sections as a final gate after reading the complete reference s
 - [ ] Typography uses an available or bundled font, with real copy checked for wrapping and hierarchy.
 - [ ] Depth is intentional: shadows, borders, blur, and rounded surfaces are used consistently and sparingly.
 - [ ] Linked states stay synchronized across visible content and accessibility text.
+- [ ] Segmented controls and variant pickers preserve one moving selection surface, semantic selected state, keyboard access, and a reduced-motion path.
 - [ ] Product claims, reviews, prices, guarantees, and technical specifications are verified or clearly marked illustrative.
 
 Do not mark a screen complete from a screenshot alone when interaction, accessibility, performance, or responsive behavior is part of the request.
