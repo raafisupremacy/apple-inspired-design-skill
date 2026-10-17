@@ -22,8 +22,14 @@ Derive variants in a perceptual color space such as OKLCH, then validate them. D
 
 When producing tokens, offer CSS custom properties and JSON. Add SwiftUI, React Native, or Flutter mappings only when that stack is relevant.
 
+## Dark-mode gate
+
+Dark mode is not complete when the background changes. Recalculate the rendered foreground/background pair for every important role and state in the dark theme, including headings, primary/secondary/tertiary text, links, icons, badges, borders that convey state, on-accent labels, buttons, overlays, focus, hover, pressed, selected, disabled, and error/success/warning treatments. A light-theme pass does not carry over to dark mode.
+
+Reject the result when important text or a control label becomes low contrast, even if the color is part of the brand palette or resembles a familiar platform color. Prefer a dark-theme role with enough separation over darkening text until hierarchy disappears. Check the actual composited color when opacity, blur, gradients, photos, or overlays are involved. Also check that the chosen text role still communicates hierarchy; a technically passing ratio can remain too weak for primary content if adjacent roles are indistinguishable.
+
 ## Check the rendered pair
 
-Measure foreground against the actual rendered background in each relevant theme and interaction state, including on-accent button labels, secondary text, and overlays. Account for transparency and image backgrounds. A familiar platform or brand color does not guarantee contrast with white text. Essential non-text indicators need appropriate contrast (generally 3:1 against adjacent colors under WCAG); distinguish these from decorative borders and exempt inactive controls.
+Measure foreground against the actual rendered background in each relevant theme and interaction state, including on-accent button labels, secondary text, and overlays. Account for transparency and image backgrounds. Essential non-text indicators need appropriate contrast (generally 3:1 against adjacent colors under WCAG); distinguish these from decorative borders and exempt inactive controls.
 
-The bundled validator checks starter token structure and primary text/background contrast only. It does not validate all foreground/background pairs, theme states, or CSS/JSON value equality; do not use its success as evidence that a project's palette passes.
+The bundled validator checks starter token structure and primary text/background contrast only. It does not validate all foreground/background pairs, theme states, composited pixels, or CSS/JSON value equality; do not use its success as evidence that a project's palette passes. Record the specific pairs checked and label unmeasured states as unverified.
