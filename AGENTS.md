@@ -5,7 +5,7 @@ When this repository is installed as an agent skill, follow `SKILL.md` as the en
 ## Operating protocol
 
 1. Identify the mode, platform, primary user task, and the artifact or project being discussed.
-2. Read `references/core-principles.md`, then route only the references needed for that task.
+2. Read every file in `references/` before acting; then apply the sections most relevant to the task as cross-checked by the complete set.
 3. Resolve product, audience, content, brand, and platform trade-offs before visual polish.
 4. Keep the project’s existing stack and conventions. Do not add dependencies, fetch remote material, inspect unrelated files, or make external changes without an explicit request.
 5. For implementation, preserve existing data and error handling; include relevant states, responsive/platform behavior, accessibility, and motion.
@@ -18,7 +18,7 @@ If the request is ambiguous, ask only for information that changes the design de
 - Use `references/brand-adaptation.md` for brand colors, assets, type, tone, and signature choices.
 - Use `references/anti-patterns.md` when auditing generic or overdecorated UI.
 - Use the matching section of `references/domain-recipes.md` when the product domain is explicit.
-- Route to the smallest relevant set of platform and topic references.
+- Read the complete reference set, then prioritize the platform and topic references that directly govern the task.
 - For reviews, report What / Why / Fix / Evidence and prioritize by user impact.
 - For builds, define hierarchy and tokens before composing components, then add states, motion, and verification.
 - Use `references/motion.md` for any animation or gesture request.

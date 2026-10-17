@@ -9,7 +9,7 @@ metadata:
 
 Use Apple’s design principles as guidance, not as a literal copy of Apple’s branding or components. Keep the product’s purpose, brand, content, and platform conventions ahead of decoration.
 
-This is an agent skill for design intelligence: inspect the real artifact, route to the smallest relevant reference set, make evidence-based design decisions, and report what was checked. It is not a testing framework or device-lab automation tool. Do not give a generic “make it more Apple” answer.
+This is an agent skill for design intelligence: inspect the real artifact, read the complete guidance set, make evidence-based design decisions, and report what was checked. It is not a testing framework or device-lab automation tool. Do not give a generic “make it more Apple” answer.
 
 ## Security and trust boundaries
 
@@ -28,6 +28,12 @@ This is an agent skill for design intelligence: inspect the real artifact, route
 - **Enforce**: only when explicitly requested; review the artifact, make bounded fixes, and re-review with evidence.
 
 Infer the mode from the request. Ask only for platform, primary user task, and brand constraints when they materially affect the result. Do not start enforcement, broad refactors, or external research unless the request calls for it.
+
+## Read the complete guidance set
+
+Before giving advice, reviewing an artifact, designing a flow, or editing code, read every file in `references/`. The files are one connected system: principles constrain platform choices, motion affects accessibility, brand adaptation affects tokens and assets, and quality guidance affects the final recommendation. Do not skip a reference because the request appears narrow.
+
+After reading all references, apply the sections that directly affect the task first and use the rest as constraints and cross-checks. If the user asks for a short answer, keep the output short but still use the complete guidance internally.
 
 ## Route by platform
 
