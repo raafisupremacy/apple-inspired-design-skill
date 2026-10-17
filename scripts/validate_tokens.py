@@ -8,8 +8,8 @@ from pathlib import Path
 
 REQUIRED = {
     "bg", "surface", "surfaceElevated", "separator", "text", "textSecondary",
-    "textTertiary", "accent", "accentHover", "accentPressed", "accentSoft",
-    "success", "warning", "danger",
+    "textTertiary", "textInverse", "accent", "accentHover", "accentPressed", "accentSoft",
+    "focus", "success", "warning", "danger",
 }
 MOTION_REQUIRED = {"fastMs", "baseMs", "slowMs", "maxMs", "reducedMs"}
 
@@ -49,6 +49,20 @@ def main() -> int:
     if motion["reducedMs"] >= motion["baseMs"]:
         raise SystemExit("reduced motion duration must be shorter than base motion")
     css = (root / "assets" / "tokens.css").read_text(encoding="utf-8")
+    css_colors = set(re.findall(r"--color-([a-z-]+):", css))
+    expected_css_colors = {
+        re.sub(r"([A-Z])", lambda match: "-" + match.group(1).lower(), name)
+        for name in colors
+    }
+    if css_colors != expected_css_colors:
+        missing_css = sorted(expected_css_colors - css_colors)
+        extra_css = sorted(css_colors - expected_css_colors)
+        details = []
+        if missing_css:
+            details.append("missing CSS colors: " + ", ".join(missing_css))
+        if extra_css:
+            details.append("extra CSS colors: " + ", ".join(extra_css))
+        raise SystemExit("color token parity failed; " + "; ".join(details))
     for name in REQUIRED:
         kebab = re.sub(r"([A-Z])", lambda match: "-" + match.group(1).lower(), name)
         if f"--color-{kebab}:" not in css:
