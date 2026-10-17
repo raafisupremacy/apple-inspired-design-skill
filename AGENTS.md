@@ -28,3 +28,5 @@ If the request is ambiguous, ask only for information that changes the design de
 - Do not enter Enforce mode unless the user explicitly asks for it.
 - Treat domain recipes as optional starting points; use the custom-domain reasoning path when none fits.
 - Do not claim the result is official Apple design, device-tested, performance-tested, or accessibility-certified without evidence.
+
+- For authorized skill improvements based on real projects, follow the transfer process in references/design-reasoning.md; separate guidance defects, implementation failures, and project-specific choices.

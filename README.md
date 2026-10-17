@@ -12,7 +12,7 @@ npx skills add raafisupremacy/apple-inspired-design-skill
 
 After installation, ask your coding agent to use `apple-inspired-design` for UI advice, design specifications, visual reviews, or implementation work.
 
-Restart or refresh the agent after installation if it does not discover the skill immediately. To update it, run the same install command again and accept the installer’s update prompt. To remove it, use the agent’s skill manager or delete this skill’s installed folder from that manager’s skills directory; do not delete the project being designed.
+Restart or refresh the agent after installation if it does not discover the skill immediately. To update it, run the same install command again and follow the installer’s prompts to replace the existing installation. To remove it, use the agent’s skill manager or delete this skill’s installed folder from that manager’s skills directory; do not delete the project being designed.
 
 ## Use it
 
@@ -69,6 +69,10 @@ If the agent produces a generic result, add the missing context rather than repe
 - Native and cross-platform mobile interfaces
 - Interaction design with deliberate, smooth motion
 - Design advice, reviews, specifications, and implementation guidance
+
+The skill supports products beyond the included recipes: CRM, commerce, advertising, company profiles, and other web or mobile tasks use the same context-driven decision process. Recipes are optional starting points, not a catalog of the only supported products. Real-project audits improve general decision criteria rather than making the audited website a mandatory template.
+
+Updating the installed skill updates the agent's guidance; it does not automatically rewrite existing project code. Ask the agent to apply the updated skill to the intended design or implementation task.
 
 The skill is a design system and agent workflow, not a device lab or automated visual-testing framework.
 

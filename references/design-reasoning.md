@@ -42,3 +42,14 @@ Record the trade-off in one sentence when a deliberate exception is necessary.
 ## Custom domain
 
 When no domain recipe applies, do not invent a generic template. Derive the structure from the product’s vocabulary, user mental model, task frequency, risk, collaboration model, and recovery path. Name the new pattern in plain language, explain why it fits the domain, and keep it local to the product instead of promoting it to a universal rule.
+
+## Transfer across products
+
+Choose the purpose of each surface, not a template for the entire product: efficient repeated work, comparison and purchase, persuasion, reading, or exploration. These can coexist in one product. Dense operational screens may need stable tables and compact controls; editorial or promotional screens may need a different rhythm. Derive density, navigation, imagery, copy, and motion from that purpose. No recipe is required for a supported web or mobile task.
+
+When improving this skill from a real project audit, separate:
+1. A missing, ambiguous, conflicting, or overbroad instruction.
+2. An implementation that did not follow an adequate instruction.
+3. A deliberate product-specific choice or an unverified observation.
+
+Check the instructions actually used before assigning the cause. Generalize the decision criterion, not the audited project's layout, wording, icons, or effects. Check a proposed rule against a contrasting use case and state when it does not apply. Update the existing owning reference rather than accumulating overlapping rules. An audit does not authorize editing either the project or this skill unless the user requested that work.
