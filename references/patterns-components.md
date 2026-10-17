@@ -17,14 +17,15 @@ Use these as decision patterns, not a mandatory component library.
 - Vary composition by job: product-led media, split detail, editorial statement, comparison, proof, and focused purchase—not the same centered heading and card repeated.
 - Establish the product and one primary action before exposing a long specification table. Move exhaustive detail below the decision or into an expandable surface.
 - Let the real asset determine the crop, scale, and background. Do not wrap every image in the same rounded card with the same shadow.
-- Use one authored scroll or interaction moment tied to the product; do not attach generic reveal animations to every section.
+- Where it strengthens the story, use an authored scroll or interaction moment tied to the product; do not attach generic reveal animations to every section.
 
 ## Component decisions
 
 - Prefer one unified panel with separators for sibling settings or rows over many disconnected cards.
 - Use sheets and dialogs for focused temporary work; keep escape, backdrop, back, and focus restoration predictable.
 - Use segmented controls only for a small set of mutually exclusive views.
-- For segmented controls, tabs, filters, and variant pickers, use one shared selected surface that moves between options; keep labels stable and expose the state with the platform’s semantic selection API.
+- Choose tabs for associated content panels, radio groups for one value, checkboxes for independent multiple values, toggle buttons for on/off actions, and links for destinations. A filter or variant picker can use different patterns depending on its task and selection rules.
+- For compact single-selection controls, a shared moving indicator can clarify continuity. Underlines, swatches, checkmarks, and native selected treatments remain valid; do not impose a pill on every control. Expose the selected state and implement the chosen pattern's keyboard behavior.
 - Use a status treatment with text and a non-color cue.
 - Use icons when they clarify an action or status; do not place an icon beside every heading.
 - Use a signature element sparingly: one distinctive visual or motion idea can give a product a point of view.

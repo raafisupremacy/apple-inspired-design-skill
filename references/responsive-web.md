@@ -35,3 +35,5 @@ Responsive design is a change in composition, interaction, and content priority,
 ## Progressive enhancement
 
 The essential page must work without JavaScript-heavy motion, unsupported browser APIs, or a service worker. Add View Transitions, scroll-driven effects, PWA caching, and richer gestures when support and product value justify them.
+
+For narrow controls, inspect the real labels and target sizes, not just page overflow. Adapt navigation priority, label wording, and control composition when wrapping makes the interface harder to operate. Keep accessible names meaningful after shortening visible labels. Aim for comfortable touch targets (commonly about 44 CSS px on web); evaluate spacing and input context rather than confusing that comfort target with every platform's conformance minimum.

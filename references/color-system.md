@@ -21,3 +21,9 @@ Derive variants in a perceptual color space such as OKLCH, then validate them. D
 - Test light, dark, increased contrast, disabled, focus, hover, pressed, and selected states.
 
 When producing tokens, offer CSS custom properties and JSON. Add SwiftUI, React Native, or Flutter mappings only when that stack is relevant.
+
+## Check the rendered pair
+
+Measure foreground against the actual rendered background in each relevant theme and interaction state, including on-accent button labels, secondary text, and overlays. Account for transparency and image backgrounds. A familiar platform or brand color does not guarantee contrast with white text. Essential non-text indicators need appropriate contrast (generally 3:1 against adjacent colors under WCAG); distinguish these from decorative borders and exempt inactive controls.
+
+The bundled validator checks starter token structure and primary text/background contrast only. It does not validate all foreground/background pairs, theme states, or CSS/JSON value equality; do not use its success as evidence that a project's palette passes.

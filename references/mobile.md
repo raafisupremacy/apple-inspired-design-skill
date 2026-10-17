@@ -6,3 +6,7 @@
 - Keep common tasks short and preserve context when moving between screens.
 - Support VoiceOver/TalkBack, Reduce Motion, increased contrast, dynamic type or font scaling, keyboard and external input where available.
 - For cross-platform frameworks, share content and tokens while allowing platform-specific interaction and motion adapters.
+
+For forms and focused work, account for the on-screen keyboard, safe-area changes, reachable actions, and scroll-to-focused-field behavior. Preserve entered data and relevant context across background/resume and navigation; distinguish pending work from completed work.
+
+Respect system back and edge gestures, and resolve conflicts with nested scrolling or swipe actions. Prefer the platform's existing control and motion behavior where it satisfies the task; Apple inspiration does not require iOS interaction conventions on Android.

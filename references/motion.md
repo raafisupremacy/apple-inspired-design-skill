@@ -2,7 +2,7 @@
 
 Motion is part of the interface's information architecture. It should explain feedback, orientation, continuity, or direct manipulation. If an animation communicates none of those, remove it.
 
-For a page or product surface, choose one authored motion moment that expresses the product or clarifies its key relationship. Use small state transitions elsewhere only as feedback. A scroll reveal on every section, a generic fade-in, or a hover lift on every card is not a motion system.
+When a page or product surface benefits from a signature motion moment, choose one that expresses the product or clarifies its key relationship. Do not require a showcase animation for routine operational or reading tasks. Use small state transitions elsewhere only as feedback. A scroll reveal on every section, a generic fade-in, or a hover lift on every card is not a motion system.
 
 ## Start with a motion brief
 
@@ -65,12 +65,12 @@ Use this calibration order:
 
 ### Segmented controls and selection surfaces
 
-For a small set of mutually exclusive views, variants, or modes, treat the selected background as one shared surface that moves between options. The control is a single stateful component, not two unrelated buttons that each receive a new fill.
+For a compact single-selection control whose design uses a moving background or underline, treat that indicator as one shared surface. Choose the semantic control first using patterns-components.md. Native controls, static swatches, and independent multi-select filters do not require a shared pill.
 
 - Keep the option labels and icons stationary; move or resize one selection layer using measured bounds, a layout animation, or a transform.
 - Animate the selection layer with a short spring or calibrated ease-out (roughly `180–280ms` for a compact control). Let the label color and icon treatment follow with a shorter fade or color transition.
 - Preserve the control’s outer track, hit targets, and focus ring while the inner selection surface moves. Do not animate width from guessed text lengths.
-- Expose the state semantically with `aria-selected` in a tablist, `aria-pressed` for a toggle group, or the native platform equivalent. Arrow keys, touch, pointer, and programmatic selection must resolve to the same state machine.
+- Match semantics to behavior: tabs use aria-selected, radio choices use checked/aria-checked, and toggle buttons use aria-pressed. Native platform controls keep their platform semantics. Implement the matching keyboard pattern; adding a role alone does not add arrow-key behavior.
 - When the content panel changes, update selection, panel content, accessible name, and any dependent summary from one source of truth. Do not leave the old panel or stale label visible during the transition.
 - Under reduced motion, keep the selected surface in the new position immediately or use a short fade; never hide the selected state.
 
@@ -84,7 +84,7 @@ onSelect(next):
   fade or color-transition labels only as supporting feedback
 ```
 
-Use this pattern for tabs, temperature modes, product variants, filters, view density, and appearance choices. Do not use it for navigation between unrelated destinations or for actions that are not mutually exclusive.
+Use this motion only when one indicator meaningfully represents one active choice. For wrapped options, unequal labels, RTL, font loading, and resizing, measure the actual destination geometry again; do not assume equal widths or horizontal-only travel. For interruption, animate from the current rendered position rather than restarting at the previous option.
 
 ### Navigation and shared content
 
@@ -141,7 +141,7 @@ Example CSS fallback:
 @media (prefers-reduced-motion: reduce) {
   .surface {
     transition: opacity 120ms linear;
-    transform: none !important;
+    /* Keep the destination transform; remove animated travel, not positioning. */
   }
 }
 ```

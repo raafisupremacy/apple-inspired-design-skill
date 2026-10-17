@@ -7,7 +7,7 @@ Use this as a diagnostic list, not a rigid ban on every visual technique.
 - **Token theater**: many named tokens that do not map to semantic roles or are not used consistently.
 - **Platform cosplay**: web controls dressed as native UI, or native apps forced into web dashboard patterns.
 - **Animation wallpaper**: motion that repeats, delays work, distracts, or has no explanatory purpose.
-- **Static selection swap**: a segmented control or variant picker changes fill or text color independently on each button instead of moving one shared selection surface, losing continuity between states.
+- **Selection discontinuity**: a control intended to show a shared moving indicator swaps unrelated fills or jumps between positions. Use continuity where it helps; static selection is valid for native controls, multi-select, reduced motion, or deliberately immediate feedback.
 - **Screenshot success**: a layout that looks polished in one static viewport but fails with real content, keyboard, text scaling, or interaction.
 - **Color semantics drift**: the same color means different states, or status is communicated only by color.
 - **Placeholder blindness**: lorem ipsum, perfect round numbers, generic names, or empty states that hide the real content shape.

@@ -29,11 +29,11 @@ Use the relevant sections as a final gate after reading the complete reference s
 - [ ] Real content, long strings, and user-provided assets were considered.
 - [ ] The chosen domain pattern supports the product’s actual primary task instead of adding unrelated screens or components.
 - [ ] Claims about support, performance, accessibility, or device behavior have evidence labels.
-- [ ] The page has a clear story arc; sections have different jobs and are not repeated card templates.
+- [ ] Composition fits the surface purpose: marketing has a clear story arc; operational and reading surfaces preserve useful repetition, scanning, and predictable task structure.
 - [ ] Typography uses an available or bundled font, with real copy checked for wrapping and hierarchy.
 - [ ] Depth is intentional: shadows, borders, blur, and rounded surfaces are used consistently and sparingly.
 - [ ] Linked states stay synchronized across visible content and accessibility text.
-- [ ] Segmented controls and variant pickers preserve one moving selection surface, semantic selected state, keyboard access, and a reduced-motion path.
+- [ ] Selection controls match their task and cardinality; their visible state, accessible state, keyboard behavior, and dependent content agree. Shared indicators, when used, preserve their final position under reduced motion.
 - [ ] Product claims, reviews, prices, guarantees, and technical specifications are verified or clearly marked illustrative.
 
 Do not mark a screen complete from a screenshot alone when interaction, accessibility, performance, or responsive behavior is part of the request.

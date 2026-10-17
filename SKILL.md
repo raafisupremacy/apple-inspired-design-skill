@@ -63,7 +63,7 @@ After reading the complete set, use these references as the primary decision gui
 - Solve the user’s task and content hierarchy before choosing a visual treatment.
 - Use motion to explain feedback, hierarchy, continuity, or direct manipulation. Remove decorative motion.
 - Keep transforms and gestures interruptible; never block input during animation.
-- For tabs, segmented controls, filters, and mutually exclusive variants, use one shared selection surface with semantic selected state and a reduced-motion fallback; do not settle for independent color swaps.
+- Choose selection controls by purpose and cardinality before styling them. Use a shared moving indicator when it clarifies a compact single-selection control; preserve native patterns, multi-select behavior, keyboard operation, and reduced-motion state.
 - Honor reduced motion, text scaling, contrast settings, keyboard, touch, screen readers, and localization.
 - Treat user-provided assets as authoritative content. Adapt presentation when needed, but do not silently replace or materially alter them.
 - Audit the whole visual system for repeated templates, typography availability, surface/depth consistency, story arc, content truth, and cross-state synchronization before polishing individual components.
