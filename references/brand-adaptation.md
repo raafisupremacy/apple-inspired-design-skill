@@ -25,3 +25,9 @@ Choose at most one or two signature decisions per surface: a distinctive hero co
 ## Surface and depth
 
 Choose the background and elevation from the product’s use scene and material story. Use flat color, spacing, and separators for grouping; reserve blur, borders, and shadows for surfaces that truly float. Define one depth language and reuse it. If every section is a rounded white panel with a strong shadow, the interface loses hierarchy and reads as a component gallery.
+
+## Coherent identity
+
+Translate brand character into a small set of related decisions across composition, type hierarchy, density, imagery, control shape, depth, and motion. A font and accent swap alone does not establish identity. Explain how the selected decisions support the audience and task; do not make every dimension distinctive.
+
+Review these decisions together across a representative content surface, an interactive state, and a narrow layout. Related surfaces should feel like one product without forcing identical composition. Preserve useful repetition in catalogs, tables, and forms; visual variety is not a goal when it harms comparison or predictability.

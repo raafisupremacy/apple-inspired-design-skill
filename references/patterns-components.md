@@ -34,3 +34,9 @@ Use these as decision patterns, not a mandatory component library.
 ## Platform translation
 
 The same information architecture may use different controls: a web link, an iOS navigation item, an Android back-aware screen, or a Flutter platform-adaptive widget. Preserve intent and context, not identical markup.
+
+## Information priority within repeated components
+
+Rank the content needed to identify, compare, decide, and act. Give the primary decision information the strongest emphasis; make metadata secondary and decoration quiet. Ratings, statuses, badges, discounts, tags, and icons do not all deserve containers or equal visual weight. Keep a badge only when its meaning helps the task.
+
+Show the context needed to interpret a value near it: unit, time period, scope, or selected option as appropriate. Use progressive disclosure for supporting detail without hiding essential decision information. Preserve alignment and comparable positions across repeated items; let real text lengths determine wrapping rather than forcing every item to look artificially identical.

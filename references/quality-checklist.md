@@ -37,3 +37,12 @@ Use the relevant sections as a final gate after reading the complete reference s
 - [ ] Product claims, reviews, prices, guarantees, and technical specifications are verified or clearly marked illustrative.
 
 Do not mark a screen complete from a screenshot alone when interaction, accessibility, performance, or responsive behavior is part of the request.
+
+## Cross-surface design review
+
+- [ ] Brand decisions connect composition, type, imagery, density, controls, depth, and motion without sacrificing task clarity.
+- [ ] Primary information outranks supporting badges and metadata; repeated components remain easy to compare.
+- [ ] Images accurately represent their entity or are clearly contextual/illustrative.
+- [ ] Compact navigation preserves access; important labels, actions, and selected options remain discoverable.
+- [ ] Related transitions form a coherent sequence, including dismissal, focus, and reduced motion.
+- [ ] Findings stay within the requested design scope; backend and business-rule correctness are not inferred from UI inspection.

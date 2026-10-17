@@ -159,3 +159,9 @@ The important behavior is the alternate choreography, not the exact CSS snippet.
 - [ ] Reduced motion, reduced transparency, text scaling, and localization remain usable.
 - [ ] Long lists, low-power devices, and high-refresh displays do not expose avoidable jank.
 - [ ] Values are labeled as calibrated project values, not claims about Apple internals.
+
+## Coherence across an interaction sequence
+
+Review trigger feedback, selection, content change, surface entry, dismissal, and return as one sequence where relevant. Give related transitions a consistent spatial relationship and timing vocabulary, while allowing different distances and tasks to require different durations. One animated indicator does not establish a complete motion system.
+
+Keep outgoing and incoming content coordinated so transitions do not flash an unexplained empty region or compete for attention. Preserve the user's reading position and focus unless the next task requires a deliberate move. Surface dismissal should have a comprehensible return path; hidden surfaces must not remain interactive or exposed as active content to assistive technology. Reduced motion must preserve the same state and orientation cues without requiring travel.
