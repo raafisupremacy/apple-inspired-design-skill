@@ -65,6 +65,8 @@ After reading the complete set, use these references as the primary decision gui
 - Keep transforms and gestures interruptible; never block input during animation.
 - Honor reduced motion, text scaling, contrast settings, keyboard, touch, screen readers, and localization.
 - Treat user-provided assets as authoritative content. Adapt presentation when needed, but do not silently replace or materially alter them.
+- Audit the whole visual system for repeated templates, typography availability, surface/depth consistency, story arc, content truth, and cross-state synchronization before polishing individual components.
+- Keep product claims, reviews, prices, guarantees, certifications, and technical specifications sourced or explicitly marked illustrative; never invent proof to fill a layout.
 - Include relevant loading, empty, error, offline, disabled, permission, and success states.
 - Preserve product personality through restrained, intentional choices instead of making every product look like Apple.
 - Treat domain recipes as optional starting points. For products outside them, use the custom-domain process in `references/design-reasoning.md` rather than forcing a familiar template.

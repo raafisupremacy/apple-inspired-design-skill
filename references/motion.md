@@ -2,6 +2,8 @@
 
 Motion is part of the interface's information architecture. It should explain feedback, orientation, continuity, or direct manipulation. If an animation communicates none of those, remove it.
 
+For a page or product surface, choose one authored motion moment that expresses the product or clarifies its key relationship. Use small state transitions elsewhere only as feedback. A scroll reveal on every section, a generic fade-in, or a hover lift on every card is not a motion system.
+
 ## Start with a motion brief
 
 Before writing code, describe each meaningful transition in this form:
