@@ -10,7 +10,9 @@ Do not use user-agent strings as the primary responsive strategy. Prefer viewpor
 
 When reporting quality, label the evidence:
 
-- **Observed**: seen in the running artifact, source, or a supplied screenshot.
+- **Source evidence**: declarations and structure inspected in files; this does not establish runtime behavior.
+- **Screenshot evidence**: appearance visible in a supplied or captured still image; this does not establish transitions, interaction, or unshown states.
+- **Observed**: behavior exercised in a running artifact, with the input, state, and viewport identified.
 - **Measured**: supported by a contrast calculation, performance trace, automated test, or viewport check.
 - **Inferred**: likely from the implementation but not executed.
 - **Unverified**: requires a device, browser, assistive technology, or production data that was unavailable.

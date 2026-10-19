@@ -15,7 +15,7 @@ Trigger → source → destination/state → property → timing/curve → inter
 Example:
 
 ```text
-Tap product card → card image/title → detail header → shared position/scale → 280ms spring → reverse from current progress → cross-fade and preserve focus
+Tap product card → card image/title → detail header → shared position/scale → calibrated spring preset → reverse from current progress → cross-fade and preserve focus
 ```
 
 This prevents “make it smoother” from becoming arbitrary animation. Keep the task, hierarchy, and state change correct before adding choreography.
@@ -30,6 +30,55 @@ Use the smallest property set that explains the change:
 - **Direct manipulation:** the finger or pointer leads the object. The release velocity informs the settling motion.
 
 Prefer transforms and opacity over animating layout, width, height, top, left, or box-shadow on large surfaces. Use FLIP, View Transitions, native layout animation, or the project’s existing layout system when the layout itself must change. Do not use scale as a substitute for a real reflow when text or controls must remain readable.
+
+## Motion primitives and state modeling
+
+Treat animation as a rendering of state, not a separate event layer. Define a small set of visual states (`rest`, `pressed`, `entered`, `exited`, `dragging`, `settling`, `disabled`) and derive the animation from the state change. This keeps the latest user intent authoritative when an animation is interrupted or a second action arrives.
+
+Use these primitives when they map to the product task:
+
+- **Variants/state recipes:** name states and their transition rules once, then reuse them for related components. Do not create a variant for every visual tweak.
+- **Layout transition:** animate a real change of position or size when preserving object identity helps orientation. Measure the destination; never guess dimensions from label length.
+- **Shared identity:** carry an image, title, or container into the next surface only when it is the same object. A shared transition is an orientation cue, not a decorative effect.
+- **Presence:** distinguish semantic dismissal from visual removal. Transfer focus before making outgoing content inert or hiding it from assistive technology; apply the enter–exit contract below.
+- **Timeline/scroll progress:** bind progress to a bounded range of scroll or media state. Provide a static end state when the API is unavailable.
+
+The primitive is a means, not a style requirement. A native transition, CSS transition, View Transition, SwiftUI animation, UIKit animator, Android motion system, React Native Reanimated, Flutter animation, or an existing project utility can satisfy the same contract.
+
+Framework-neutral state shape:
+
+```text
+state = { status, selectedKey, layoutBounds, progress, velocity }
+transition(previous, next):
+  preserve semantic state immediately
+  animate only the visual delta
+  sample current rendered value on interruption
+```
+
+Do not model motion as `onClick → play animation → update state`. That ordering creates stale content, broken reversal, and focus races.
+
+## Choosing the right transition
+
+Use this order before choosing an API:
+
+1. Is the task feedback, orientation, continuity, or direct manipulation?
+2. Does the layout or object identity actually change?
+3. Can the interaction be completed without motion, gesture, or JavaScript?
+4. What is the smallest property set and shortest duration that preserves meaning?
+5. What is the reduced-motion choreography and what remains interactive during it?
+
+If the answer to the first question is unclear, remove the animation. If only a value changes, prefer opacity/color or a brief numeric replacement over moving the whole region. If a surface changes hierarchy, use position and scale only when they explain where it came from and where it will return.
+
+### Property ownership and handoff
+
+For overlapping effects, identify the owner of each rendered property. Independent CSS transitions, keyframes, gesture handlers, and layout engines must not overwrite the same `transform` or opacity without an explicit composition rule. Separate transform components are safe only when the renderer actually composes them; separate API names alone do not establish ownership.
+
+- Prefer the project's existing animation compositor. During drag, input owns translation; suspend competing positional motion or compose it in a coordinate system that keeps the object under the pointer. Decorative hover motion must yield when it interferes with manipulation.
+- On release or cancellation, hand the current position and supported velocity to the settling transition. Stop the old writer and invalidate its completion before the next owner takes over; do not snap back to the previous target first.
+- Use separate visual layers only when simultaneous effects are necessary, such as layout positioning on an outer layer and press scale on an inner layer. Check transform order, measured bounds, clipping, focus outlines, and hit testing; an extra wrapper is not automatically a fix.
+- Reduced motion removes animation, not ownership of destination geometry. Keep the selected position, drag result, and open/closed state correct.
+
+Check a layout update while the pointer hovers and drags, then release, cancel, and resize. The object should remain attached to input and settle at the latest valid destination without a jump or an old effect restoring stale geometry.
 
 ## Tokens and calibration
 
@@ -51,6 +100,22 @@ Use this calibration order:
 3. Tune overshoot only for physical objects, sheets, and direct manipulation; never bounce text or critical feedback.
 4. Interrupt midway, reverse direction, and trigger a second action. If the motion jumps, restarts, or blocks input, fix the state model before tuning values.
 
+### Spring or duration-based easing
+
+| Need | Starting choice | Calibration criterion |
+| --- | --- | --- |
+| Short opacity/color feedback or a deliberately timed sequence | Duration and easing | The result is readable promptly; timing does not delay the action. |
+| Retargetable position, shared geometry, or settling after direct manipulation | Spring supported by the existing platform | Position remains continuous on interruption; preserve velocity when the engine supports it. A spring need not bounce. |
+| A visual property that represents exact scroll progress | Direct bounded progress mapping | Reversing scroll reverses the effect without lag; smoothing must not misrepresent progress. |
+
+While dragging, follow input directly; apply a spring to settling after release rather than making the object chase the pointer. Duration-based animation can also be interrupted, but restarting from the current value does not by itself preserve velocity.
+
+For a physics spring, calibrate stiffness and damping with mass held stable initially. Unwanted repeated overshoot calls for more damping toward a nonoscillating response. A slow nonoscillating tail may instead be excessive damping: reduce it or increase stiffness while recalibrating damping. More damping is not always faster. Prefer an established platform preset before tuning raw parameters.
+
+Inspect short and long travel, slow and fast releases, and reversal midway. Use the engine's documented rest thresholds; thresholds that are too loose can produce a visible final snap, while overly strict ones can prolong tiny updates. Completion still must not gate focus, semantic state, or user input.
+
+Duration/bounce spring controls and physical mass/stiffness/damping controls are different parameterizations. Check the installed engine's precedence and units before combining options; do not assume a physics spring has a fixed duration or copy constants between engines. The timing tokens above are calibration targets for perceived responsiveness, not guaranteed spring completion times or Apple specifications.
+
 ## Choreography rules
 
 - Animate one hierarchy at a time. Parent movement establishes context; child reveals follow only when they add orientation.
@@ -60,6 +125,33 @@ Use this calibration order:
 - Start from the current visual state and velocity. Do not reset to the initial keyframe when a user reverses a gesture.
 - Do not make a user wait for a decorative reveal, shimmer, count-up, or parallax effect.
 - Avoid looping motion except for ongoing system activity, and pair it with a static label/state.
+
+## Enter–exit contract
+
+Define which surface owns focus and interaction throughout the transition. Prefer the platform or project's established dialog/navigation lifecycle; animation completion must not decide whether a user action took effect.
+
+- **Enter:** establish the destination's semantics, focus policy, and usable controls when it becomes active. Avoid focusing content that is still invisible or offscreen; reveal the focus target immediately or simplify its entry motion. For a modal, coordinate focus containment and background inertness with activation.
+- **Replace:** use simultaneous movement or a short cross-fade when it preserves context. An outgoing visual copy must not duplicate active controls, accessible content, or IDs. Use exit-before-enter only when the sequence explains a meaningful relationship; show a real loading state if the destination is unavailable rather than extending an exit animation.
+- **Dismiss:** resolve the close action through the existing state model. Transfer focus to an available trigger or a logical target in the surviving view before making the outgoing surface inert or accessibility-hidden. Coordinate release of background inertness with that transfer. A visual exit may finish afterward without trapping focus or blocking input. `aria-hidden` alone does not prevent keyboard or pointer interaction.
+- **Interrupt:** when reopened during exit, continue from current geometry and restore active semantics. Cancel or invalidate obsolete completion callbacks so an earlier exit cannot remove the reopened surface, move its focus, or clear its scroll lock.
+- **Finish:** remove only the outgoing instance that is still meant to leave. Cleanup also needs to work when motion is skipped, cancelled, or reduced; do not depend solely on a duration timer or a transition event that may never fire.
+
+This contract governs visual lifecycle, not authorization or persistence: keep the project's existing validation, pending, failure, and recovery behavior. A cancelled dismissal must leave the surface usable.
+
+## Interaction recipes and acceptance checks
+
+These recipes apply the platform patterns below; they are optional starting points, not required effects. Use the existing platform behavior when it already satisfies the task.
+
+| Interaction and purpose | Motion and interruption | Reduced motion | Check the outcome |
+| --- | --- | --- | --- |
+| Segmented selection: track one active choice | Move one measured indicator; retarget from its current position on rapid selection. Keep labels and hit targets stable. | Place the indicator at the selected option immediately. | Select A → B → C rapidly, then resize or load a longer label: indicator, panel, focus, and semantic selection agree with the latest choice. |
+| Sheet: explain a temporary layer and return | Follow the drag directly, then settle or dismiss from release intent. Reopening during exit invalidates old cleanup. Keep a visible close alternative. | Preserve direct input tracking when needed for manipulation; remove autonomous travel and bounce on release or button activation. | Close with focus inside, reopen before exit ends, and remove the original trigger: no stale unmount, hidden focus, or stranded background lock. |
+| List reorder: preserve item identity | Track items by stable identity rather than position; move affected neighbors only. Reconcile a drop with current data using the product's existing update policy. | Update order without animated rearrangement; retain focus and announce the resulting position where appropriate. | Reorder by keyboard as well as drag. Insert or remove an item during drag: no duplicated/lost items, stale target, or unexplained focus loss. |
+| Card to detail: connect the same object across hierarchy | Match the same object and current geometry on entry and return. If its counterpart disappears, use a simple replacement or fade. | Preserve navigation and context with immediate replacement or a short fade. | Return after filtering out the source card: keep the filter, choose a logical focus target, and never invent a shared destination just to complete the effect. |
+
+For reorder, define what happens when the dragged item or drop target disappears: resolve against current eligible items or cancel visibly under the existing product policy. Do not restore stale data to preserve an animation. For shared content, an unmounted, filtered, or unavailable counterpart is a fallback case, not permission to change the user's filters or selection.
+
+Repeat relevant checks with reduced motion active and with the preference changed mid-transition. Verify the final state and operability even if no animation completion fires. Record viewport, input, sequence, and observed outcome using compatibility-testing.md; these recipes alone are not evidence of working runtime behavior.
 
 ## Platform patterns
 
@@ -97,7 +189,7 @@ Use this motion only when one indicator meaningfully represents one active choic
 
 - A compact touch sheet follows the drag directly, applies a velocity-aware settle/dismiss decision, and has a visible dismissal affordance.
 - A desktop dialog or popover should not pretend to be a full-screen page. Anchor it to its trigger when spatial context helps.
-- Back, escape, scrim tap, and the close control should resolve to the same state machine. Restore focus to the trigger after dismissal.
+- Back, escape, scrim tap, and the close control should resolve to the same state machine. Transfer focus on semantic dismissal using the enter–exit contract, with a logical fallback when the trigger is unavailable.
 - Never hide destructive terms or confirmation controls behind a delayed animation.
 
 ### Lists and layout changes
@@ -106,11 +198,14 @@ Use this motion only when one indicator meaningfully represents one active choic
 - Prefer cross-fade plus small translation for a filter result; avoid moving every row across the screen for a minor query change.
 - Reserve image and text space before loading to prevent layout jumps. A skeleton is useful only when it represents the final geometry and does not pulse unnecessarily.
 
-### Scroll-linked effects
+### Scroll-triggered and scroll-linked effects
 
-- Tie title collapse, header treatment, and reveal to scroll progress, not to arbitrary timers.
-- Clamp the effect, keep content readable, and avoid parallax that changes the apparent position of an actionable control.
-- Provide a static layout when scroll-driven APIs or JavaScript are unavailable. Scroll-linked motion must never be required to discover or operate content.
+- **Triggered:** entering a viewport threshold starts a time-based transition. Define once versus replay explicitly; a reading reveal usually remains visible after its first entry rather than repeatedly hiding on small scroll reversals. Use visibility observation instead of per-frame layout polling. Reveal focused or anchor-targeted content immediately.
+- **Linked:** a property follows progress between defined start and end offsets in the actual scroll container. Use this for a collapsing title or meaningful progress treatment; clamp the range and reverse naturally with scroll. Recompute bounds after resize or content changes, and handle a zero-length range with a stable static state.
+- Keep native scrolling, keyboard navigation, and reading position under user control. Do not intercept wheel or touch input to force a timeline. Avoid parallax that displaces actionable controls or smoothing that makes a progress indicator lag behind its meaning.
+- Essential content is visible in the base layout. Add hidden reveal states only when enhancement is ready; an unavailable observer, scroll API, or JavaScript must leave readable content. With reduced motion, show reveals immediately and use a static layout for decorative travel/parallax; retain useful progress information without spatial animation.
+
+Check initial load in the middle of the page, anchor navigation, fast forward/back scroll across a threshold, resize, and late-loading media. Triggered effects follow their once/replay policy; linked effects match current progress. Neither leaves content hidden, restarts the reading flow, or requires finishing an animation to reach an action.
 
 ## Gesture contract
 
