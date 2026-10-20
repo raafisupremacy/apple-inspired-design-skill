@@ -37,9 +37,29 @@ Use the relevant sections as a final gate after reading the complete reference s
 - [ ] Selection controls match their task and cardinality; their visible state, accessible state, keyboard behavior, and dependent content agree. Shared indicators, when used, preserve their final position under reduced motion.
 - [ ] Product claims, reviews, prices, guarantees, and technical specifications are verified or clearly marked illustrative.
 
+## Acceptance gate
+
+- [ ] The established context or brief identifies the task and constraints relevant to the change; new surfaces also establish hierarchy, next action, content shape, and evidence limits.
+- [ ] The visual treatment supports the task, brand, or intended experience; expressive choices preserve readability and operability, and familiar patterns are not changed merely to appear distinctive.
+- [ ] Repeated patterns were compared across representative screens or states, while platform-specific differences remain intentional.
+- [ ] Real or representative content was checked for wrapping, empty/long/error states, and the required text scale or zoom.
+- [ ] Visual acceptance is based on rendered evidence when appearance is part of the request; source inspection and validators are reported separately.
+
+Do not call a result polished, production-ready, or fully applied when this gate is incomplete. Label the missing evidence and the smallest next verification step.
+
 Do not mark a screen complete from a screenshot alone when interaction, accessibility, performance, or responsive behavior is part of the request.
 
 ## Cross-surface design review
+
+For a multi-screen design or implementation, compare representative related surfaces at comparable viewport and text settings, then check the relevant compact/wide and enlarged-text variants. For a one-screen task, use its important states. Use real content and the project's existing visual direction; do not invent another screen just to perform this check.
+
+- [ ] The first emphasis, comparison groups, and next useful action match the stated task; surrounding space supports those relationships.
+- [ ] Equivalent controls belong to a consistent family; differences have a task, state, input, or platform reason.
+- [ ] Headers and navigation distinguish peer destinations from deeper levels consistently; back controls have a meaningful destination.
+- [ ] Status text, icons, and colors agree, including neutral and unavailable-data states.
+- [ ] System bars, app chrome, and content remain legible and separated where needed, including themes, overlays, insets, and keyboard changes on platforms that expose them.
+
+When a rendered comparison exposes a concrete failure, fix its shared cause within the authorized scope and recheck the affected surfaces. In Review mode, report the fix instead of editing. Record the artifact, state, viewport/text settings when known, and remaining limitations. Static screenshots support composition findings; source checks and validator passes do not establish visual quality or interactive behavior. Without rendered evidence, label visual acceptance unverified rather than declaring the design polished.
 
 - [ ] Brand decisions connect composition, type, imagery, density, controls, depth, and motion without sacrificing task clarity.
 - [ ] Primary information outranks supporting badges and metadata; repeated components remain easy to compare.

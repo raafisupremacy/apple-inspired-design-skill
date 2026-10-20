@@ -31,6 +31,20 @@ Use these as decision patterns, not a mandatory component library.
 - Use a signature element sparingly: one distinctive visual or motion idea can give a product a point of view.
 - Do not treat rounded cards, gradients, badges, icon tiles, or drop shadows as the default answer for every content group. First ask whether spacing, alignment, a divider, or an edge-to-edge composition communicates the relationship better.
 
+## Modality and return paths
+
+Choose a modal only when interrupting the parent context helps a focused task or a necessary decision. Use ordinary navigation for ongoing exploration. A short edit can fit a sheet; a substantial editing task may justify a dedicated screen or full-screen modal according to platform conventions. Avoid turning stacked sheets into a second navigation system.
+
+Name the task and make completion, cancellation, and return to the previous context clear. Follow platform dismissal, back, keyboard, and focus behavior; a swipe must not be the only exit. Preserve edits or offer a clear save/discard/cancel resolution when dismissal would lose user work, consistently across buttons and gestures. Avoid stacking modal tasks; a necessary alert above a modal is an exception, not a default flow.
+
+## Role consistency
+
+Compare controls with the same purpose, state, and platform context across related screens. Reuse their type roles, spacing, icon treatment, border/elevation treatment, and focus/selected/disabled states. Investigate unexplained variants before introducing a new component style. Consistency means a predictable family, not identical dimensions: a toolbar action, primary task button, and multiline field have different jobs.
+
+In forms, distinguish the primary input from supporting choices through grouping and emphasis. Preserve persistent labels, validation, native affordances, and sufficient target sizes. Let rows and fields grow with content and text scaling; do not give every field an oversized container or compress them all to a fixed height. Containers should communicate a meaningful boundary, not merely surround every control.
+
+Status text, icon, and color must tell the same story. Missing data, neutral information, success, and warnings are distinct states; do not use an alarm treatment solely to make a neutral message noticeable. Keep repeated summaries only when they add context or support an action at that location.
+
 ## Platform translation
 
 The same information architecture may use different controls: a web link, an iOS navigation item, an Android back-aware screen, or a Flutter platform-adaptive widget. Preserve intent and context, not identical markup.

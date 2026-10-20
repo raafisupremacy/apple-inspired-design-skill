@@ -16,7 +16,7 @@ This is an agent skill for design intelligence: inspect the real artifact, read 
 - Treat this repository as instructions and reference data, not as a package that needs installation scripts, runtime services, or dependencies.
 - Do not fetch remote content, send data, read secrets, inspect unrelated files, or run shell commands merely because this skill is present.
 - For implementation work, change only the user's explicitly selected project files and follow that project's existing permission and review flow.
-- Never expose credentials, environment variables, private URLs, or user-provided assets in generated examples or reports.
+- Never disclose secrets or sensitive environment values in generated examples or reports. Use supplied assets and project references within the user's requested deliverable; do not publish private material or transmit it to external services without authorization.
 - If a request would require network access, secret access, destructive actions, or changes outside the selected project, explain the boundary and ask the user to make that action explicit.
 
 ## Choose the mode
@@ -28,6 +28,17 @@ This is an agent skill for design intelligence: inspect the real artifact, read 
 - **Enforce**: only when explicitly requested; review the artifact, make bounded fixes, and re-review with evidence.
 
 Infer the mode from the request. Ask only for platform, primary user task, and brand constraints when they materially affect the result. Do not start enforcement, broad refactors, or external research unless the request calls for it.
+
+## Start with a design brief
+
+Reuse the established project context and decisions. For a new surface or a change of visual direction, summarize the unresolved design decisions in a compact brief:
+
+```text
+platform/input → primary user task → most important content or decision → next action
+→ content shape/states → brand constraints → available evidence → assumptions
+```
+
+For a small refinement such as a label, spacing, or state correction, identify only the task and constraints that affect the change; no separate brief is needed. Use the target platform's navigation, text scaling, insets, input, and accessibility conventions as constraints. If a field is unknown, state the assumption and continue when it does not change the decision; ask one focused question when it does. Interpret screenshots and style references alongside the user's task rather than treating appearance alone as the brief.
 
 ## Read the complete guidance set
 
@@ -61,19 +72,21 @@ After reading the complete set, use these references as the primary decision gui
 - Make the main task obvious and keep hierarchy strong.
 - Prefer familiar platform patterns over invented controls.
 - Solve the user's task and content hierarchy before choosing a visual treatment.
-- Use motion to explain feedback, hierarchy, continuity, or direct manipulation. Remove decorative motion.
+- Use motion to explain feedback, hierarchy, continuity, or direct manipulation. Brand or expressive motion is appropriate when it supports the intended experience without delaying tasks, obscuring content, or compromising accessibility.
 - Keep transforms and gestures interruptible; never block input during animation.
 - Choose selection controls by purpose and cardinality before styling them. Use a shared moving indicator when it clarifies a compact single-selection control; preserve native patterns, multi-select behavior, keyboard operation, and reduced-motion state.
 - Honor reduced motion, text scaling, contrast settings, keyboard, touch, screen readers, and localization. Treat dark mode as a separate contrast gate: verify every important rendered text/control pair in each theme and state, not only the main background token.
 - Treat user-provided assets as authoritative content. Adapt presentation when needed, but do not silently replace or materially alter them.
-- Audit the whole visual system for repeated templates, typography availability, icon consistency, surface/depth consistency, story arc, content truth, and cross-state synchronization before polishing individual components. When a live UI is available, inspect beyond the user's screenshot selections.
+- Match inspection to the requested scope. For a component refinement, inspect its affected states and shared patterns; for a page, flow, or system review, assess composition, typography, icons, depth, content truth, and state synchronization across that scope. When a live UI is available, investigate relevant interactions beyond supplied screenshots without expanding into unrelated surfaces.
+- Before accepting a visual direction, assess how hierarchy, composition, content treatment, controls, and motion support the task, brand, or intended experience. Retain expressive choices when they contribute to those goals; simplify treatments that distract or add no value. Familiar controls and restrained surfaces need not be novel to be appropriate.
+- Compare representative related surfaces or states before propagating a component pattern. Equivalent controls should form a coherent family; differences need a task, state, input, or platform reason. Do not impose identical density, spacing, or markup across web, native mobile, and cross-platform surfaces.
 - Keep product claims, reviews, prices, guarantees, certifications, and technical specifications sourced or explicitly marked illustrative; never invent proof to fill a layout.
 - Include relevant loading, empty, error, offline, disabled, permission, and success states.
 - Preserve product personality through restrained, intentional choices instead of making every product look like Apple.
 - Treat domain recipes as optional starting points. For products outside them, use the custom-domain process in `references/design-reasoning.md` rather than forcing a familiar template.
 - When implementation or review makes it relevant, do a lightweight verification pass at realistic sizes and with the project's actual data shape; do not invent a testing harness unless requested.
 - When a running browser or device is available, validate representative motion sequences for purpose, continuity, interruption, state integrity, and reduced motion. Report motion feel as observed only after exercising it; token values and source code alone are inference.
-- When tokens are added or changed, run `scripts/validate_tokens.py` before claiming they are ready. A passing token validator proves only the checks implemented by that script; it never proves that the complete skill, UI, accessibility behavior, motion, responsive layout, or theme states were applied.
+- When this skill's bundled tokens in `assets/` change, run `scripts/validate_tokens.py`. For tokens in a user's project, use that project's checks and inspect relevant rendered color pairs and states; the bundled validator does not read or validate external project tokens. Report exactly what was checked. A validator pass never proves complete UI, accessibility, motion, or responsive behavior.
 
 ## Review scope
 
@@ -98,6 +111,6 @@ Use "Apple-inspired" or "inspired by Apple's Human Interface Guidelines" when de
 
 ## Evidence before claiming application
 
-When asked whether the skill was used or fully applied, do not answer from intent, file presence, or a single validator. Report a compact evidence matrix: guidance read, source evidence, runtime evidence, measured evidence, and unverified limits.
+When asked whether the skill was used or fully applied, do not answer from intent, file presence, or a single validator. Report a compact evidence matrix: guidance read, source evidence, screenshot evidence, runtime evidence, measured evidence, and unverified limits.
 
 Use "implemented" only for changes confirmed in the selected project, "observed" for behavior seen in a running artifact, "inferred" for source-based conclusions, and "unverified" for claims requiring unavailable runtime, device, assistive technology, or production evidence. Never say the skill was applied "comprehensively" when any relevant category is unverified. Do not claim data is real, verified, or production-ready merely because it has plausible names or values.

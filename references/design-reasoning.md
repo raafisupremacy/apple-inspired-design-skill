@@ -22,12 +22,28 @@ If a missing answer changes the design materially, ask one focused question. Oth
 4. **Interaction model**: choose familiar platform patterns for navigation, input, feedback, and recovery.
 5. **Composition**: place content using alignment, grouping, whitespace, scale, and contrast.
 6. **Identity**: add brand color, imagery, type personality, or one signature moment where it reinforces the product.
-7. **Motion**: add only motion that explains state, relationship, or manipulation.
+7. **Motion**: explain state, relationship, or manipulation; allow deliberate brand expression when it supports the intended experience without impairing readability, control, or accessibility.
 8. **Verification**: check states, accessibility, content length, and the real task.
 
 Do not reverse this order by starting with gradients, glass, cards, animations, or a component library.
 
-## Trade-offs
+## Calibrate composition to the task
+
+Before propagating a visual treatment, describe what the user should notice first, which information they must compare together, and the next useful action. Apply that hierarchy to a representative surface with real content. For multi-screen work, compare a related screen or state before spreading the same decisions across the product.
+
+Calibrate spacing at three levels: within a related group, between groups, and around the page or surface. Related content should read as a group before borders or cards are added. If users must scroll back and forth to compare short related values, regroup them; if dense content loses legibility or operability, give it more space or progressive disclosure. Preserve readable type, focus indicators, and input targets rather than shrinking everything to fit.
+
+Judge density by task, not by how much of the viewport is filled. A repeated-work table benefits from aligned, compact comparisons; an editorial story may need generous pauses; a form with enlarged text may need more scrolling. Empty space is a defect only when it breaks grouping, obscures priority, or makes the task needlessly harder. Do not force every action above the fold or stretch sparse content merely to fill a screen.
+
+Translate visual intent through the target platform's layout units, text scaling, input methods, and navigation conventions. Screenshot pixels do not establish CSS pixels, dp, pt, hit areas, or device font settings. Starter token values are inputs to calibration, not universal dimensions to copy across platforms.
+
+## Reveal complexity without hiding the task
+
+Keep frequent actions and information required for the current decision visible. Move rarely used options behind a clearly labeled, discoverable control; do not hide the primary action in an overflow menu solely to make the screen look minimal. When a collapsed setting affects the current result, keep its active value or effect apparent.
+
+Distinguish progressive disclosure (optional advanced detail) from staged disclosure (steps everyone must complete). A wizard can suit separable stages, but keep interdependent choices and their consequences together when users need repeated comparison. For example, comparing options and prices benefits from shared context; entering delivery details can be a later stage. Do not apply a fixed maximum number of visible controls or steps across products. If usage evidence is unavailable, label frequency assumptions and verify the common task before propagating the pattern.
+
+## Resolve trade-offs
 
 When values conflict, prefer in this order unless the product has a strong reason otherwise:
 

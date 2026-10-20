@@ -13,6 +13,12 @@ Define roles rather than a fixed hue:
 
 Derive variants in a perceptual color space such as OKLCH, then validate them. Do not derive success, warning, or danger from the brand accent. Dark mode is a separate accessible palette, not simply an opacity or brightness inversion.
 
+## Materials and content layers
+
+For Apple platforms that support Liquid Glass, prefer the system component's material behavior. Apple's Materials guidance reserves Liquid Glass for the functional controls/navigation layer, not content cards; transient interactive elements such as activated sliders and toggles are a documented exception. Standard materials may differentiate regions within content. Choose materials by semantic purpose, not a screenshot's apparent tint.
+
+For custom translucent surfaces, check foreground legibility over representative light, dark, and busy backgrounds while content scrolls beneath them. Honor available Reduce Transparency and Increase Contrast settings. On web or Android, preserve the hierarchy using the project's platform components and an opaque fallback where needed; a CSS blur is not equivalent to Apple's adaptive material. Do not introduce glass just to signal Apple inspiration.
+
 ## Validation
 
 - Check text and essential icons against their actual background.
@@ -20,7 +26,7 @@ Derive variants in a perceptual color space such as OKLCH, then validate them. D
 - Pair color with text, shape, iconography, or position for status and charts.
 - Test light, dark, increased contrast, disabled, focus, hover, pressed, and selected states.
 
-When producing tokens, offer CSS custom properties and JSON. Add SwiftUI, React Native, or Flutter mappings only when that stack is relevant.
+When producing tokens, use the selected project's existing theme format and semantic roles: for example CSS custom properties on web, theme resources or Compose tokens on Android, and the existing native or framework theme on other platforms. Supply framework-neutral JSON or additional mappings only when requested or needed by the project's shared-token workflow. Do not create unused parallel token files.
 
 ## Dark-mode gate
 

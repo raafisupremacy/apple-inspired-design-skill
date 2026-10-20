@@ -1,8 +1,19 @@
 # Motion system
 
-Motion is part of the interface's information architecture. It should explain feedback, orientation, continuity, or direct manipulation. If an animation communicates none of those, remove it.
+Motion is part of the interface's information architecture. Functional motion should explain feedback, orientation, continuity, or direct manipulation. Expressive motion may instead support the brand or intended experience; keep it subordinate to readability, user control, and accessibility. Remove motion that serves neither purpose.
 
 When a page or product surface benefits from a signature motion moment, choose one that expresses the product or clarifies its key relationship. Do not require a showcase animation for routine operational or reading tasks. Use small state transitions elsewhere only as feedback. A scroll reveal on every section, a generic fade-in, or a hover lift on every card is not a motion system.
+
+## Source basis and limits
+
+Cross-checked against the following official Apple sources on 2026-10-20:
+
+- [HIG: Motion](https://developer.apple.com/design/human-interface-guidelines/motion): purposeful, optional motion; brief and precise feedback; gesture-consistent direction; cancellation; reuse of system behavior; restraint for frequent interactions.
+- [HIG: Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility), Cognitive section: reduce automatic/repetitive motion and bounce, track gestures directly, replace spatial transitions with fades, and avoid animated depth and blur changes under Reduce Motion.
+- [WWDC23: Animate with springs](https://developer.apple.com/videos/play/wwdc2023/10158/), 4:19–8:26, 9:24–10:18, and 16:12 onward: position/velocity continuity, non-bouncy springs, duration/bounce parameters, perceptual versus settling duration, and context-sensitive presets.
+- [WWDC24: Enhance your UI animations and transitions](https://developer.apple.com/videos/play/wwdc2024/10145/), 1:35–4:06 and 11:20 onward: shared identity, continuously interactive transitions, and velocity-preserving gesture handoff.
+
+The timings, stagger ranges, CSS examples, property-ownership rules, and cross-platform recipes below are this skill's implementation recommendations, not Apple specifications. Apple framework behavior does not establish equivalent behavior in another engine. Preserve the target platform's conventions and verify its actual implementation. Source verification here covers the cited guidance and transcripts, not device testing or visual equivalence to Apple's interfaces.
 
 ## Start with a motion brief
 
@@ -61,7 +72,7 @@ Do not model motion as `onClick → play animation → update state`. That order
 
 Use this order before choosing an API:
 
-1. Is the task feedback, orientation, continuity, or direct manipulation?
+1. Does the motion explain feedback, orientation, continuity, or direct manipulation, or serve a deliberate brand/experience purpose?
 2. Does the layout or object identity actually change?
 3. Can the interaction be completed without motion, gesture, or JavaScript?
 4. What is the smallest property set and shortest duration that preserves meaning?
@@ -89,15 +100,15 @@ Use semantic tokens rather than scattering durations. The bundled starter values
 | `fast` | 180ms | press feedback, focus, small opacity/color changes |
 | `base` | 280ms | control state, compact navigation, list updates |
 | `slow` | 480ms | sheets, large content continuity, deliberate reveals |
-| maximum | 650ms | upper bound for ordinary UI; avoid making users wait |
+| maximum | 650ms | bundled starter ceiling for timed UI transitions, not an Apple limit or spring settling cutoff |
 
-For CSS, pair durations with curves such as `ease-out` for entering, `ease-in` for leaving, and a custom cubic-bezier only when the product has calibrated it. For spring-capable platforms, specify mass/stiffness/damping or the named platform preset rather than pretending a cubic-bezier is a spring. These are starting points, not Apple’s private timings; calibrate against the actual content, refresh rate, and input device.
+For CSS, pair durations with calibrated curves such as `ease-out` for entering or `ease-in` for leaving when they fit the interaction; these are local starting choices, not HIG prescriptions. For spring-capable platforms, prefer established presets or the engine's supported perceptual duration/bounce controls. Use mass/stiffness/damping when the engine or task requires physical parameters; a cubic-bezier is not a spring. Calibrate against actual content, refresh rate, and input device rather than assuming Apple's timings.
 
 Use this calibration order:
 
 1. Make the end state immediate and correct.
 2. Add the shortest duration that preserves identity and direction.
-3. Tune overshoot only for physical objects, sheets, and direct manipulation; never bounce text or critical feedback.
+3. Start with no bounce when unsure. Add restrained overshoot when physical feedback or the product's playful character benefits; keep reading and critical feedback stable. This is a design judgment, not a universal prohibition on expressive animation.
 4. Interrupt midway, reverse direction, and trigger a second action. If the motion jumps, restarts, or blocks input, fix the state model before tuning values.
 
 ### Spring or duration-based easing
@@ -108,7 +119,7 @@ Use this calibration order:
 | Retargetable position, shared geometry, or settling after direct manipulation | Spring supported by the existing platform | Position remains continuous on interruption; preserve velocity when the engine supports it. A spring need not bounce. |
 | A visual property that represents exact scroll progress | Direct bounded progress mapping | Reversing scroll reverses the effect without lag; smoothing must not misrepresent progress. |
 
-While dragging, follow input directly; apply a spring to settling after release rather than making the object chase the pointer. Duration-based animation can also be interrupted, but restarting from the current value does not by itself preserve velocity.
+While dragging, keep the object attached to input. A platform-supported interactive spring can track and retarget during the gesture while preserving velocity for release, as shown in WWDC24; avoid tuning that makes the object visibly lag behind the pointer. Duration-based animation can also be interrupted, but restarting from the current value does not by itself preserve velocity.
 
 For a physics spring, calibrate stiffness and damping with mass held stable initially. Unwanted repeated overshoot calls for more damping toward a nonoscillating response. A slow nonoscillating tail may instead be excessive damping: reduce it or increase stiffness while recalibrating damping. More damping is not always faster. Prefer an established platform preset before tuning raw parameters.
 
@@ -124,6 +135,7 @@ Duration/bounce spring controls and physical mass/stiffness/damping controls are
 - Preserve scroll position and focus when switching between sibling states.
 - Start from the current visual state and velocity. Do not reset to the initial keyframe when a user reverses a gesture.
 - Do not make a user wait for a decorative reveal, shimmer, count-up, or parallax effect.
+- For frequent interactions, retain appropriate system feedback and add custom motion only when it communicates useful additional information; do not replay an attention-demanding flourish on every action.
 - Avoid looping motion except for ongoing system activity, and pair it with a static label/state.
 
 ## Enter–exit contract
@@ -227,6 +239,8 @@ Reduced motion must preserve open/closed visibility, selected position, focus, a
 
 Also account for reduced transparency, increased contrast, text scaling, keyboard focus, touch, screen readers, and localization. Never use motion, color, sound, or position as the only signal.
 
+Under reduced motion, also avoid animating depth along the z-axis or transitioning into and out of blur. A static material treatment is a separate reduced-transparency decision; fading content must still preserve legibility and semantic state.
+
 Example CSS fallback:
 
 ```css
@@ -248,7 +262,7 @@ The important behavior is the alternate choreography, not the exact CSS snippet.
 ## Motion review checklist
 
 - [ ] The trigger and state change are clear without motion.
-- [ ] Motion has one primary purpose: feedback, orientation, continuity, or manipulation.
+- [ ] Motion has a clear functional or expressive purpose and does not compete with the primary task.
 - [ ] The end state is correct before animation starts.
 - [ ] The motion can be interrupted, reversed, and followed by another action.
 - [ ] Focus, scroll position, back behavior, and input remain predictable.

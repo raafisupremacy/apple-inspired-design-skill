@@ -6,7 +6,15 @@ Support localization, long strings, pluralization, dates, currencies, RTL layout
 
 Every important flow considers loading, empty, error, offline, disabled, permission denied, validation, success, and destructive confirmation. Time-limited messages need an accessible alternative; focus and announcements must move predictably.
 
-## Content truth and state consistency
+## Typography that adapts
+
+Define text by semantic role using the project's existing text styles. Preserve the distinction between headings, reading content, labels, and metadata as sizes change. Avoid thin weights for small essential text; do not copy Apple font sizes or tracking tables into unrelated fonts or platforms.
+
+At enlarged text sizes, let rows grow, stack inline metadata, and reduce columns before truncating essential content. Keep important content in its reading order and scale meaningful icons with the text where appropriate. A scrollable area is not a reason to clip labels; if a preview must truncate, provide an accessible way to read the full content. Use comfortable leading for multiline reading rather than tightening it to preserve a fixed-height card.
+
+Custom fonts must support the target platform's text-size and accessibility behavior too. Test real long labels and reading content at default and enlarged settings; check hierarchy, wrapping, control labels, and focus access. Do not shrink text or disable scaling to make a screenshot match. Native chrome may follow its own platform scaling behavior; this is not permission to freeze essential app content.
+
+## Content and state agreement
 
 Keep one source of truth for any user-selected entity or value. When a user changes a variant, account, date, filter, quantity, or theme, synchronize every dependent image, label, price, summary, alt text, and action—or clearly mark a deliberately fixed reference state. Review visible content and accessibility text together; a correct visual state with stale alt text is still a bug.
 

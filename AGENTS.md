@@ -23,7 +23,7 @@ If the request is ambiguous, ask only for information that changes the design de
 - For builds, define hierarchy and tokens before composing components, then add states, motion, and verification.
 - Use `references/motion.md` for any animation or gesture request.
 - Use `references/user-assets.md` for supplied media and keep original assets intact.
-- Run `scripts/validate_tokens.py` after token changes and `scripts/check_references.py` after routing changes.
+- Run `scripts/validate_tokens.py` after changes to this skill's bundled tokens and `scripts/check_references.py` after routing changes. Validate user-project tokens with that project's checks and relevant rendered-state inspection; the bundled validator does not inspect external projects.
 - When a running UI is available, use `references/compatibility-testing.md` to validate representative motion feel and report runtime observations separately from source inference.
 - Do not claim Apple endorsement, device testing, contrast validation, or performance results without evidence.
 - Do not enter Enforce mode unless the user explicitly asks for it.
