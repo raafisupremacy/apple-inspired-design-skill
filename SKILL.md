@@ -9,7 +9,7 @@ metadata:
 
 Use Apple's design principles as guidance, not as a literal copy of Apple's branding or components. Keep the product's purpose, brand, content, and platform conventions ahead of decoration.
 
-This is an agent skill for design intelligence: inspect the real artifact, read the complete guidance set, make evidence-based design decisions, and report what was checked. It is not a testing framework or device-lab automation tool. Do not give a generic "make it more Apple" answer.
+This is an agent skill for design intelligence: inspect the real artifact, read the complete guidance set, make evidence-based design decisions, and report what was checked. It is not a testing framework or device-lab automation tool. Do not give a generic "make it more Apple" answer. A visual redesign request must result in a visible composition, hierarchy, type, spacing, surface, or motion decision when the inspected artifact supports one; build and accessibility work alone is not a visual redesign.
 
 ## Security and trust boundaries
 
@@ -39,6 +39,8 @@ platform/input → primary user task → most important content or decision → 
 ```
 
 For a small refinement such as a label, spacing, or state correction, identify only the task and constraints that affect the change; no separate brief is needed. Use the target platform's navigation, text scaling, insets, input, and accessibility conventions as constraints. If a field is unknown, state the assumption and continue when it does not change the decision; ask one focused question when it does. Interpret screenshots and style references alongside the user's task rather than treating appearance alone as the brief.
+
+Distinguish the requested outcome: visual redesign, interaction/accessibility repair, or both. For visual work, use the diagnosis and comparison workflow in `references/design-reasoning.md`. Preserve behavior, data, and brand intent; existing composition may change within the authorized scope. If inspection supports retaining the design, explain that decision without inventing cosmetic changes or claiming a redesign.
 
 ## Read the complete guidance set
 
@@ -85,6 +87,7 @@ After reading the complete set, use these references as the primary decision gui
 - Preserve product personality through restrained, intentional choices instead of making every product look like Apple.
 - Treat domain recipes as optional starting points. For products outside them, use the custom-domain process in `references/design-reasoning.md` rather than forcing a familiar template.
 - When implementation or review makes it relevant, do a lightweight verification pass at realistic sizes and with the project's actual data shape; do not invent a testing harness unless requested.
+- Separate visual changes from technical/accessibility changes in the report. For each visual change, state the previous problem, the new decision, and the evidence used. A build, unit test, lint pass, or token check may support implementation quality but cannot prove visual improvement.
 - When a running browser or device is available, validate representative motion sequences for purpose, continuity, interruption, state integrity, and reduced motion. Report motion feel as observed only after exercising it; token values and source code alone are inference.
 - When this skill's bundled tokens in `assets/` change, run `scripts/validate_tokens.py`. For tokens in a user's project, use that project's checks and inspect relevant rendered color pairs and states; the bundled validator does not read or validate external project tokens. Report exactly what was checked. A validator pass never proves complete UI, accessibility, motion, or responsive behavior.
 

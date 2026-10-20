@@ -62,5 +62,5 @@ For practical instructions and comparable information, separate key parameters, 
 - A dashboard or workspace should answer one primary question before showing supporting metrics. Give the first viewport a clear orientation, current state, and next useful action.
 - Limit competing emphasis: use one dominant metric or action per region, then quiet secondary values with spacing, grouping, and typography before adding color, badges, or containers.
 - Group related metrics, activity, and records into a few meaningful surfaces. If every item becomes a card, pill, or colored icon, comparison slows and the page becomes visual noise.
-- Preserve scan paths at each width. On compact screens, reorder, collapse, or replace secondary regions; do not squeeze a desktop dashboard into a narrow column or rely on horizontal overflow for essential content.
+- Preserve scan paths at each width. On compact screens, reorder, collapse, or replace secondary regions rather than squeezing a desktop dashboard. Avoid accidental page-level horizontal overflow; deliberate table overflow can preserve comparison when scrolling is discoverable and controls remain reachable.
 - This is a decision rule, not a fixed card count. Dense tables and compact controls are appropriate when repeated comparison is the task; promotional or editorial surfaces need a different rhythm.

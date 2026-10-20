@@ -37,6 +37,22 @@ Judge density by task, not by how much of the viewport is filled. A repeated-wor
 
 Translate visual intent through the target platform's layout units, text scaling, input methods, and navigation conventions. Screenshot pixels do not establish CSS pixels, dp, pt, hit areas, or device font settings. Starter token values are inputs to calibration, not universal dimensions to copy across platforms.
 
+## Turn a visual diagnosis into a change
+
+For an appearance improvement, use this sequence within the requested scope:
+
+1. **Baseline:** inspect the supplied or running artifact and identify the highest-impact visible problems. Record location and evidence; source-only conclusions remain inferred. Do not invent a quota of defects.
+2. **Intended result:** state what should receive attention first, what belongs together, and how the next action becomes clearer. Name constraints worth preserving separately from layout choices that can change.
+3. **Design decision:** connect each targeted problem to a concrete change in composition, relative type emphasis, grouping, spacing, control treatment, imagery, or motion. Explain the relationship being improved, not just “cleaner” or “more premium.”
+4. **Implementation:** in Implement mode, repair the shared visual cause using existing components where suitable. The smallest complete change may rearrange a layout; preserving business behavior does not require preserving its presentation. In Review or Design mode, deliver the finding or specification instead.
+5. **Comparison:** compare the affected surface before and after using comparable content, state, viewport, theme, and text settings. Check whether the targeted problem improved and whether reflow, contrast, or discoverability regressed. A color swap or successful build alone cannot resolve a grouping problem.
+
+A representative surface calibrates a multi-screen redesign; it does not replace the rest of the requested scope. Track which in-scope surfaces are changed, intentionally retained with a reason, or still pending. Apply shared decisions where they fit, retaining differences supported by the task or platform.
+
+When rendering is unavailable, continue source changes supported by the evidence and report visual acceptance as unverified. Use an existing project preview or renderer when available; a mockup illustrates intent but is not proof of the implemented app. If no before image exists, assess the current result against the criteria without claiming an observed improvement. Never use a screenshot to claim motion quality.
+
+For example, equal emphasis on primary content and metadata can be addressed by changing their relative type roles and grouping, then comparing the reading order. In a dense comparison tool, aligned repeated values may already be appropriate: keep that density and repair only evidenced friction. Visual difference is not itself the acceptance criterion.
+
 ## Reveal complexity without hiding the task
 
 Keep frequent actions and information required for the current decision visible. Move rarely used options behind a clearly labeled, discoverable control; do not hide the primary action in an overflow menu solely to make the screen look minimal. When a collapsed setting affects the current result, keep its active value or effect apparent.

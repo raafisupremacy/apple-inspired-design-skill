@@ -44,6 +44,8 @@ Use the relevant sections as a final gate after reading the complete reference s
 - [ ] Repeated patterns were compared across representative screens or states, while platform-specific differences remain intentional.
 - [ ] Real or representative content was checked for wrapping, empty/long/error states, and the required text scale or zoom.
 - [ ] Visual acceptance is based on rendered evidence when appearance is part of the request; source inspection and validators are reported separately.
+- [ ] Each targeted visual problem has a concrete design change or evidenced retention decision; before/after comparison addresses that problem rather than merely demonstrating different styling.
+- [ ] The requested scope is accounted for; a representative screen is not reported as completion of an entire redesign.
 
 Do not call a result polished, production-ready, or fully applied when this gate is incomplete. Label the missing evidence and the smallest next verification step.
 

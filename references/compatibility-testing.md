@@ -21,6 +21,8 @@ Never turn an inference into a pass claim.
 
 ## Minimum verification
 
+Select checks affected by the requested change and supported platforms. This is a relevance matrix, not a requirement to test every category for a label or component fix. For appearance work, use the before/after comparison in `design-reasoning.md`; report visual acceptance separately from technical checks.
+
 - Responsive: narrow mobile, large mobile, tablet or intermediate container, desktop, zoom/text scaling, and long content.
 - Input: keyboard and focus, touch, coarse pointer, fine pointer, and platform back behavior where relevant.
 - Preferences: light/dark, increased contrast, reduced motion, reduced transparency, and locale/RTL where supported.

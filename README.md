@@ -75,7 +75,16 @@ Use the request type that matches your goal:
 
 When you provide images, logos, screenshots, or video, the agent treats them as authoritative project content. It may recommend a different crop, scale, placement, or responsive treatment, but it should not silently replace or materially alter the supplied asset.
 
-If the agent produces a generic result, add the missing context rather than repeating “make it more Apple”: name the primary user task, platform and input method, current project path, real content shape, brand constraints, and the outcome you want. For an implementation request, explicitly authorize code changes in the selected project.
+For a visual redesign, ask the agent to connect observed visual problems to composition changes and compare the result with the baseline. Keep technical repairs and visual results separate. Existing brand and behavior can be preserved while hierarchy, grouping, and layout change. If context is missing, supply the task, platform, real content, and intended outcome; a generic result is not automatically caused by an inadequate user prompt.
+
+```text
+Use apple-inspired-design to redesign the selected interface. Inspect the current artifact,
+identify the highest-impact visual problems, and implement concrete composition and hierarchy
+improvements while preserving brand, platform conventions, and business behavior. Compare before
+and after where rendering is available. Cover the requested screens; use one representative
+surface to calibrate, not to silently reduce scope. Report visual results separately from
+build/test/accessibility checks, and label unverified rendering or interaction explicitly.
+```
 
 ## What the package contains
 

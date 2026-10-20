@@ -20,6 +20,8 @@ Return a platform and task summary, information hierarchy, layout/composition, s
 
 Inspect the existing project first. Reuse its components and dependencies. Make the smallest complete change, preserve data and error handling, and do a proportionate verification pass. Report files changed, checks run, and anything unverified; do not build a testing system unless the user asks for one.
 
+For visual work, report **targeted visual problem → design change or justified retention → comparison evidence → remaining scope**, followed by technical/accessibility checks and limits. Technical-only repairs do not complete an outstanding visual redesign. Distinguish source implementation completed from rendered acceptance verified; a component-only repair does not require a whole-product redesign.
+
 ## Enforce
 
 Use only after explicit request. Establish the scope and pass criteria, inspect the artifact, fix only in-scope issues, and re-review. Stop after a bounded number of cycles or when progress requires product decisions. Never imply certification or App Store/WCAG conformance without the required evidence.
