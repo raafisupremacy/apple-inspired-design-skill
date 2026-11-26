@@ -48,6 +48,7 @@ Always read the four core foundations (and the intake form for new work), then a
 
 | When the task involves | Read |
 | --- | --- |
+| no terminal or Python available to run `scripts/palette.py` | [palette library](references/foundations/palette-library.md) + the fallback steps in [color](references/foundations/color.md) |
 | movement, transitions, gestures, "feels stiff" | [motion](references/foundations/motion.md) |
 | bars, sheets, glass, shadows, elevation | [depth and materials](references/foundations/depth-materials.md) |
 | photos, icons, app icons, supplied assets | [imagery and icons](references/foundations/imagery-icons.md) |
@@ -102,7 +103,7 @@ Separate visual decisions from technical checks. For each visual change give the
 
 ## Bundled tools
 
-- `scripts/palette.py SEED [--strategy neutral|tinted|vivid|immersive] [--format css|tailwind|json|swiftui|compose|flutter|report]` — accessible light/dark tokens from any color.
+- `scripts/palette.py SEED [--strategy neutral|tinted|vivid|immersive] [--format css|tailwind|json|swiftui|compose|flutter|report]` — accessible light/dark tokens from any color. Without Python, use `references/foundations/palette-library.md`.
 - `assets/tokens.json` / `assets/tokens.css` — starter type, spacing, radius, elevation, motion, and spring tokens. Their colors come from a **sample** seed; replace it with the user's color.
 - `scripts/validate_tokens.py` and `scripts/check_references.py` — maintenance checks for this skill's own files.
 - `examples/core-object-gallery.html` — three different products, each first screen built around its core object.

@@ -132,5 +132,25 @@ class RenderTests(unittest.TestCase):
             self.assertIn("f2643a", out.lower())
 
 
+class LibraryTests(unittest.TestCase):
+    def test_library_covers_every_seed_and_strategy(self):
+        text = palette.render_library()
+        for name, seed in palette.LIBRARY_SEEDS:
+            self.assertIn(seed.lower(), text)
+            self.assertIn(name, text)
+        for strategy in palette.STRATEGIES:
+            self.assertIn(f"## {strategy}", text)
+
+    def test_library_palettes_pass_floors(self):
+        for _, seed in palette.LIBRARY_SEEDS:
+            for strategy in palette.STRATEGIES:
+                self.assertEqual(palette.check_palette(palette.build_palette(seed, strategy)), [])
+
+    def test_bundled_library_file_is_in_sync(self):
+        path = Path(__file__).resolve().parents[1] / "references" / "foundations" / "palette-library.md"
+        self.assertEqual(path.read_text(encoding="utf-8"), palette.render_library(),
+                         "run: python scripts/palette.py --write-library")
+
+
 if __name__ == "__main__":
     unittest.main()

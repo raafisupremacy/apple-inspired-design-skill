@@ -12,7 +12,7 @@ The skill instructs an agent to work within the user's selected project. It does
 
 ## Local scripts
 
-- `scripts/palette.py` reads a color from its arguments and prints generated tokens. Only `--write-starter` writes files, and only this skill's own `assets/tokens.json` and `assets/tokens.css`.
+- `scripts/palette.py` reads a color from its arguments and prints generated tokens. Only `--write-starter` and `--write-library` write files, and only this skill's own `assets/tokens.json`, `assets/tokens.css`, and `references/foundations/palette-library.md`.
 - `scripts/validate_tokens.py` and `scripts/check_references.py` read files inside this repository.
 
 None of them access the network, execute subprocesses, or load third-party packages. The example HTML loads no external scripts.

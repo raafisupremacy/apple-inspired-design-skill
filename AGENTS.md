@@ -15,7 +15,7 @@ If the request is ambiguous, ask only for information that changes the design de
 
 ## Maintaining this skill
 
-- After changing `scripts/palette.py` or `assets/tokens.json`: run `python scripts/palette.py "<seed>" --strategy <s> --write-starter`, then `python scripts/validate_tokens.py` and `python -m unittest discover -s tests`.
+- After changing `scripts/palette.py` or `assets/tokens.json`: run `python scripts/palette.py "<seed>" --strategy <s> --write-starter` and `python scripts/palette.py --write-library`, then `python scripts/validate_tokens.py` and `python -m unittest discover -s tests`.
 - After adding, moving, or renaming references: run `python scripts/check_references.py` and update the routing table in `SKILL.md`.
 - When improving the skill from real projects, follow the transfer process in `references/quality/review-and-evidence.md`: prefer adding craft knowledge, recipes, and examples over adding reporting rules, and update the owning reference instead of duplicating guidance.
 - Use `evals/README.md` to compare outputs before and after a change.

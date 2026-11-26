@@ -62,6 +62,22 @@ Roles:
 
 A light brand color (yellow, mint) gets a dark `onAccent` label instead of being darkened into mud; a very dark seed is brightened for dark mode. Map the output into the project's existing theme system rather than adding a parallel token file. If the project already has tokens, validate its pairs instead of replacing them.
 
+### When `scripts/palette.py` cannot run
+
+Some agents have no terminal or Python (sandboxed chats, restricted IDEs). Do not fall back to black, white, or gray because of that. Use the precomputed [palette library](palette-library.md) — 14 hue families × 4 strategies, light and dark, all passing the same contrast floors:
+
+1. **Pick the nearest entry.** Choose the library hue closest to the user's color (red, coral, orange, amber, lime, green, teal, sky, blue, indigo, violet, pink, brown, graphite) and the strategy from the intake form. Copy its `light` and `dark` lines as the role values, and its brand ramp if you need gradients or chart steps.
+2. **Keep the user's color exact.** Set `brand` to the user's color in both themes.
+3. **Adjust the accent only if needed.** If the user's color is close to the library seed (same family, similar brightness), keep the library's accent roles. If it is noticeably different (a deep navy versus the library blue, a pastel versus a saturated seed), set `accent` to the user's color and choose `onAccent`: near-white for mid-to-dark colors (OKLCH lightness below about 0.68), near-black for light ones (yellow, mint, pastels). Derive `accentHover` / `accentPressed` by lowering OKLCH lightness about 0.035 / 0.07 in the light theme and raising it in the dark theme. Keep the library's surfaces, text, link, and semantic roles — they are already validated.
+4. **On the web, let CSS derive variants.** Relative color syntax works in current evergreen browsers, with a plain value first as a fallback:
+
+   ```css
+   --color-accent-hover: #e5582e;
+   --color-accent-hover: oklch(from var(--color-accent) calc(l - 0.035) c h);
+   ```
+
+5. **Report honestly.** Library roles are measured by the generator; any role you changed is unverified until checked with a contrast tool (browser DevTools color picker, Xcode Accessibility Inspector, Android Accessibility Scanner). Say which roles you changed.
+
 ## Craft details
 
 - **Tint the neutrals.** Pure `#FFFFFF`/`#000000` grounds with `#888` grays read as unfinished. A ground with a trace of the brand hue (chroma ≈ 0.005–0.02) feels designed.
