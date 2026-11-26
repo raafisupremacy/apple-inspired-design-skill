@@ -28,7 +28,7 @@ Share tokens, content, information architecture, and composition. Adapt navigati
 Practical mappings:
 
 - **Flutter:** `CupertinoSliverNavigationBar` (large title) on iOS and `SliverAppBar.large` on Android; `.adaptive` constructors (`Switch.adaptive`, `Slider.adaptive`, `showAdaptiveDialog`); `ColorScheme` from `palette.py --format flutter`; `Hero` for card-to-detail; `HapticFeedback.selectionClick()`.
-- **React Native / Expo:** native-stack headers with `headerLargeTitle: true` and `headerTransparent`/blur on iOS; platform tabs; a bottom-sheet library only if already in the project; `Platform.select` for control styling; Reanimated + Gesture Handler for springs and gestures (`../foundations/motion.md`); `expo-haptics` when present.
+- **React Native / Expo:** native-stack headers with `headerLargeTitleEnabled: true` (`headerLargeTitle` in React Navigation 6) and `headerTransparent`/blur on iOS; platform tabs; a bottom-sheet library only if already in the project; `Platform.select` for control styling; Reanimated + Gesture Handler for springs and gestures (`../foundations/motion.md`); `expo-haptics` when present.
 - **Compose Multiplatform / KMP:** keep Material on Android; on iOS prefer native SwiftUI screens or careful adaptive components.
 
 Use the system font on each platform unless the brand supplies a licensed font for both.

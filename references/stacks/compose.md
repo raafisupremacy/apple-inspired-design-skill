@@ -18,9 +18,9 @@ Express Apple-inspired qualities through Material 3, not by imitating iOS.
 - **Shapes:** `Shapes(small = RoundedCornerShape(10.dp), medium = RoundedCornerShape(18.dp), large = RoundedCornerShape(28.dp))`; `CircleShape`/full rounding for primary buttons.
 - **Press feedback:** combine ripple with a scale: collect `interactionSource.collectIsPressedAsState()` and animate `graphicsLayer { scaleX = s; scaleY = s }` with `spring(dampingRatio = 0.86f, stiffness = 273f)`.
 - **Motion:** `animateContentSize()`, `AnimatedContent`, `SharedTransitionLayout` + `Modifier.sharedElement()` for card → detail, `LazyRow` with `rememberSnapFlingBehavior` for shelves.
-- **Haptics:** `LocalHapticFeedback.current.performHapticFeedback(HapticFeedbackType.TextHandleMove)` or `View.performHapticFeedback(HapticFeedbackConstants.CONFIRM)`.
+- **Haptics:** `LocalHapticFeedback.current.performHapticFeedback(HapticFeedbackType.SegmentTick)` for selection changes (`Confirm` for success; older Compose versions offer `TextHandleMove`) or `View.performHapticFeedback(HapticFeedbackConstants.CONFIRM)`.
 - **Surfaces:** tonal elevation via `surfaceContainer*` roles rather than heavy shadows; `Card` with generous radius and padding.
 
 ## Accessibility
 
-Font scale up to 200%, TalkBack labels (`Modifier.semantics`), `contentDescription` for icons, 48dp touch targets, reduced motion via `Settings.Global.ANIMATOR_DURATION_SCALE` / `LocalAccessibilityManager`, both themes. Use `@PreviewFontScale`, `@PreviewLightDark`, and `@PreviewScreenSizes` as quick evidence.
+Font scale up to 200%, TalkBack labels (`Modifier.semantics`), `contentDescription` for icons, 48dp touch targets, reduced motion by reading `Settings.Global.ANIMATOR_DURATION_SCALE` (0 means the user turned animations off; keep state changes, drop travel and bounce), both themes. Use `@PreviewFontScale`, `@PreviewLightDark`, and `@PreviewScreenSizes` as quick evidence.

@@ -15,7 +15,7 @@ Share tokens, content, and composition across platforms; adapt navigation, contr
 ## React Native / Expo
 
 - **Tokens:** generate `--format json` and expose a typed theme object (light/dark) through the project's theming approach; switch with `useColorScheme()` plus a user override if the app has one.
-- **Navigation:** React Navigation / Expo Router native stack with `headerLargeTitle: true`, `headerLargeTitleShadowVisible: false`, `headerTransparent` + `headerBlurEffect` on iOS; native bottom tabs where available; Android gets Material-style headers and system back.
+- **Navigation:** React Navigation / Expo Router native stack with `headerLargeTitleEnabled: true` (React Navigation 7; `headerLargeTitle` in v6 — check the installed version), `headerLargeTitleShadowVisible: false`, `headerTransparent` + `headerBlurEffect` on iOS; native bottom tabs where available; Android gets Material-style headers and system back.
 - **Craft:** `Pressable` with a Reanimated scale to 0.97 using `withSpring(…, { mass: 1, stiffness: 273, damping: 28.4 })`; `FlatList` horizontal with `snapToInterval` and `decelerationRate="fast"` for shelves; `borderRadius: 22` with `borderCurve: 'continuous'` on iOS; shared element transitions where the navigation library supports them; `expo-haptics` if present; a blur view only if a blur library is already installed.
 - **Type:** system font by default; `fontVariant: ['tabular-nums']`; allow font scaling (`allowFontScaling` stays true; cap with `maxFontSizeMultiplier` only for chrome, never for reading text).
 - **Accessibility:** `accessibilityRole`, `accessibilityLabel`, `accessibilityState`; `AccessibilityInfo.isReduceMotionEnabled()` / Reanimated's `useReducedMotion()`; 44–48 targets; both themes.
