@@ -1,30 +1,193 @@
+/* Starter tokens. Generated from assets/tokens.json by scripts/palette.py --write-starter. */
+/* The sample seed #f2643a is an example, not a default brand: replace it with the user's color. */
+
 :root {
-  --color-bg: #f5f5f7;
-  --color-surface: #ffffff;
-  --color-surface-elevated: #ffffff;
-  --color-separator: #e5e5ea;
-  --color-text: #1d1d1f;
-  --color-text-secondary: #6e6e73;
-  --color-text-tertiary: #86868b;
-  --color-text-inverse: #ffffff;
-  --color-accent: #0071e3;
-  --color-accent-hover: #0077ed;
-  --color-accent-pressed: #006acf;
-  --color-accent-soft: #e8f1fd;
-  --color-focus: #0071e3;
-  --color-success: #1d7a3c;
-  --color-warning: #a15c00;
-  --color-danger: #c4271b;
-  --radius-control: 12px;
-  --radius-panel: 20px;
+  --brand-50: #fff2ee;
+  --brand-100: #ffe0d7;
+  --brand-200: #ffc5b3;
+  --brand-300: #ff987a;
+  --brand-400: #f36c45;
+  --brand-500: #d74b1e;
+  --brand-600: #b23300;
+  --brand-700: #8d2600;
+  --brand-800: #6a1a00;
+  --brand-900: #490f00;
+  --brand-950: #2e0600;
+  color-scheme: light dark;
+  --color-bg: #fef1ee;
+  --color-surface: #fffcfb;
+  --color-surface-elevated: #fffefe;
+  --color-separator: #e8dbd7;
+  --color-text: #1e1310;
+  --color-text-secondary: #685a56;
+  --color-text-tertiary: #8c7c78;
+  --color-text-inverse: #fffbf9;
+  --color-brand: #f2643a;
+  --color-accent: #f2643a;
+  --color-accent-hover: #e5582e;
+  --color-accent-pressed: #d94d20;
+  --color-accent-soft: #ffe2da;
+  --color-on-accent: #1d0d08;
+  --color-link: #bf3700;
+  --color-focus: #bf3700;
+  --color-success: #008039;
+  --color-warning: #9d6300;
+  --color-danger: #c9302d;
+  --color-info: #0074b8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #160e0c;
+    --color-surface: #231916;
+    --color-surface-elevated: #302521;
+    --color-separator: #413531;
+    --color-text: #fff0eb;
+    --color-text-secondary: #c4b3ae;
+    --color-text-tertiary: #988884;
+    --color-text-inverse: #110f0e;
+    --color-brand: #f2643a;
+    --color-accent: #f2643a;
+    --color-accent-hover: #ff6f46;
+    --color-accent-pressed: #ff8562;
+    --color-accent-soft: #4b1f12;
+    --color-on-accent: #1d0d08;
+    --color-link: #f4663c;
+    --color-focus: #f4663c;
+    --color-success: #58cd78;
+    --color-warning: #ed9e2f;
+    --color-danger: #ff8b7f;
+    --color-info: #61b9ff;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #160e0c;
+  --color-surface: #231916;
+  --color-surface-elevated: #302521;
+  --color-separator: #413531;
+  --color-text: #fff0eb;
+  --color-text-secondary: #c4b3ae;
+  --color-text-tertiary: #988884;
+  --color-text-inverse: #110f0e;
+  --color-brand: #f2643a;
+  --color-accent: #f2643a;
+  --color-accent-hover: #ff6f46;
+  --color-accent-pressed: #ff8562;
+  --color-accent-soft: #4b1f12;
+  --color-on-accent: #1d0d08;
+  --color-link: #f4663c;
+  --color-focus: #f4663c;
+  --color-success: #58cd78;
+  --color-warning: #ed9e2f;
+  --color-danger: #ff8b7f;
+  --color-info: #61b9ff;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #fef1ee;
+  --color-surface: #fffcfb;
+  --color-surface-elevated: #fffefe;
+  --color-separator: #e8dbd7;
+  --color-text: #1e1310;
+  --color-text-secondary: #685a56;
+  --color-text-tertiary: #8c7c78;
+  --color-text-inverse: #fffbf9;
+  --color-brand: #f2643a;
+  --color-accent: #f2643a;
+  --color-accent-hover: #e5582e;
+  --color-accent-pressed: #d94d20;
+  --color-accent-soft: #ffe2da;
+  --color-on-accent: #1d0d08;
+  --color-link: #bf3700;
+  --color-focus: #bf3700;
+  --color-success: #008039;
+  --color-warning: #9d6300;
+  --color-danger: #c9302d;
+  --color-info: #0074b8;
+}
+
+:root {
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
   --radius-pill: 999px;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 96px;
+  --space-12: 128px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-rounded: ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  --text-display-size: clamp(2.75rem, 1.6rem + 5vw, 6rem);
+  --text-display-leading: 1.04;
+  --text-display-tracking: -0.025em;
+  --text-display-weight: 700;
+  --text-title1-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  --text-title1-leading: 1.08;
+  --text-title1-tracking: -0.02em;
+  --text-title1-weight: 700;
+  --text-title2-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.5rem);
+  --text-title2-leading: 1.12;
+  --text-title2-tracking: -0.015em;
+  --text-title2-weight: 600;
+  --text-title3-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.75rem);
+  --text-title3-leading: 1.2;
+  --text-title3-tracking: -0.01em;
+  --text-title3-weight: 600;
+  --text-eyebrow-size: 1rem;
+  --text-eyebrow-leading: 1.3;
+  --text-eyebrow-tracking: 0;
+  --text-eyebrow-weight: 600;
+  --text-headline-size: 1.0625rem;
+  --text-headline-leading: 1.3;
+  --text-headline-tracking: -0.005em;
+  --text-headline-weight: 600;
+  --text-body-size: 1.0625rem;
+  --text-body-leading: 1.5;
+  --text-body-tracking: 0;
+  --text-body-weight: 400;
+  --text-callout-size: 1rem;
+  --text-callout-leading: 1.45;
+  --text-callout-tracking: 0;
+  --text-callout-weight: 400;
+  --text-subhead-size: 0.9375rem;
+  --text-subhead-leading: 1.4;
+  --text-subhead-tracking: 0;
+  --text-subhead-weight: 400;
+  --text-footnote-size: 0.8125rem;
+  --text-footnote-leading: 1.4;
+  --text-footnote-tracking: 0.005em;
+  --text-footnote-weight: 400;
+  --text-caption-size: 0.75rem;
+  --text-caption-leading: 1.35;
+  --text-caption-tracking: 0.01em;
+  --text-caption-weight: 500;
+  --layout-content-max: 1180px;
+  --layout-wide-max: 1440px;
+  --layout-reading-max: 680px;
+  --layout-gutter-compact: 20px;
+  --layout-gutter-medium: 32px;
+  --layout-gutter-wide: 48px;
+  --layout-section-compact: 72px;
+  --layout-section-wide: 140px;
+  --elevation-low: 0 1px 2px rgb(0 0 0 / 0.06), 0 1px 1px rgb(0 0 0 / 0.04);
+  --elevation-mid: 0 6px 16px rgb(0 0 0 / 0.08), 0 1px 3px rgb(0 0 0 / 0.06);
+  --elevation-floating: 0 18px 48px rgb(0 0 0 / 0.14), 0 3px 10px rgb(0 0 0 / 0.08);
   --motion-fast: 180ms;
   --motion-base: 280ms;
   --motion-slow: 480ms;
@@ -32,33 +195,14 @@
   --motion-reduced: 120ms;
   --ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-linear: linear;
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
-  --text-body: 17px;
-  --text-caption: 14px;
-  --text-title: 40px;
-  --text-hero: 56px;
-  --leading-body: 1.45;
-  --leading-display: 1.1;
-  --content-max: 1200px;
-  --reading-max: 680px;
-  --page-padding: 48px;
-  --elevation-floating: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #000000;
-    --color-surface: #1c1c1e;
-    --color-surface-elevated: #2c2c2e;
-    --color-separator: #38383a;
-    --color-text: #f5f5f7;
-    --color-text-secondary: #a1a1a6;
-    --color-text-tertiary: #8e8e93;
-    --color-text-inverse: #000000;
-    --color-accent: #409cff;
-    --color-accent-hover: #64b5ff;
-    --color-accent-pressed: #2997ff;
-    --color-accent-soft: #0a2a4f;
-  }
+  --spring-smooth: linear(0, 0.029, 0.099, 0.189, 0.285, 0.381, 0.47, 0.552, 0.624, 0.687, 0.741, 0.787, 0.825, 0.857, 0.884, 0.906, 0.924, 0.939, 0.951, 0.96, 0.968, 0.975, 0.98, 0.984, 0.987, 0.99, 0.992, 0.994, 0.995, 0.996, 0.997, 0.997, 1);
+  --spring-smooth-duration: 673ms;
+  --spring-snappy: linear(0, 0.027, 0.094, 0.183, 0.283, 0.383, 0.48, 0.57, 0.649, 0.719, 0.778, 0.828, 0.87, 0.903, 0.929, 0.95, 0.966, 0.979, 0.988, 0.994, 0.999, 1.002, 1.003, 1.005, 1.005, 1.005, 1.005, 1.004, 1.004, 1.003, 1.003, 1.002, 1);
+  --spring-snappy-duration: 484ms;
+  --spring-bouncy: linear(0, 0.036, 0.124, 0.242, 0.372, 0.501, 0.62, 0.726, 0.815, 0.887, 0.943, 0.984, 1.013, 1.031, 1.042, 1.046, 1.045, 1.042, 1.037, 1.031, 1.025, 1.02, 1.014, 1.01, 1.006, 1.004, 1.001, 1, 0.999, 0.998, 0.998, 0.998, 1);
+  --spring-bouncy-duration: 728ms;
+  --press-scale: 0.97;
+  --press-opacity: 0.85;
 }
