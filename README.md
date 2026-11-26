@@ -26,7 +26,14 @@ Restart or refresh the agent if it does not discover the skill. Run the same com
 
 ## Use it
 
-Tell the agent what you are making and, ideally, your color. If you do not give a color, the skill asks or offers three directions — it never silently picks black and white.
+Tell the agent what you are making. Before designing anything new, the agent asks you a short intake form — product and audience, platform, color, mood, light/dark, and the one thing users come for — pre-filling whatever it can detect from your project. Agents with a multiple-choice question tool show it as a form; others send it as a numbered list. Answer briefly or say "you decide" for any item. It never silently picks black and white.
+
+```text
+1. What is it and who is it for?        5. Theme: light first / dark first / both
+2. Surface: iOS / Android / web / ...   6. The one thing users come for: (a) … (b) …
+3. Color: brand color, a color you like, "show me 3 options", or "you decide"
+4. Mood: calm & premium / warm & friendly / bold & energetic / precise / cinematic
+```
 
 ```text
 Use apple-inspired-design to build the home screen of my habit-tracking iOS app in SwiftUI.

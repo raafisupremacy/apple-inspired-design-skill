@@ -5,7 +5,7 @@ Color belongs to the user and the product. This skill never decides on its own t
 ## Rule zero: get the color decision
 
 1. If the user or project already has a brand color, palette, or theme, use it.
-2. If not, **ask** for a color or a mood. If they would rather not choose, **offer three concrete directions** (seed hex + strategy + mood + one-line reason) and let them pick.
+2. If not, **ask** through the intake form (`intake-form.md`): their brand color, a color they like, or "show me 3 options". For options, offer three concrete directions (seed hex + strategy + mood + one-line reason) and let them pick.
 3. If they say "you decide", choose the direction that best fits the product and audience, state it in one line, and proceed.
 4. Monochrome or dark is a valid choice when the user or product calls for it (a pro photo tool, a cinema app). It is never the silent default.
 

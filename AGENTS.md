@@ -5,7 +5,7 @@ When this repository is installed as an agent skill, follow `SKILL.md` as the en
 ## Operating protocol
 
 1. Identify the mode, surface/platform, primary user task, and the artifact or project.
-2. Resolve the design direction before visual work — especially color: use the user's color, or ask / offer three directions. Never silently default to black, white, gray, or system blue.
+2. For new work, have the user fill in the intake form (`references/foundations/intake-form.md`) before visual work: pre-fill what the project answers, ask the missing fields (structured question tool if available, otherwise the text form), and wait. Never fill color, mood, theme, or core object with your own guesses, and never silently default to black, white, gray, or system blue.
 3. Read the four core foundations (`references/foundations/principles.md`, `references/foundations/color.md`, `references/foundations/typography.md`, `references/foundations/layout.md`), then only the surface, stack, and quality references the task needs, using the routing table in `SKILL.md`.
 4. Keep the project's existing stack and conventions. Do not add dependencies, fetch remote material, inspect unrelated files, or make external changes without an explicit request.
 5. For implementation, preserve existing data and error handling; include states, responsive/platform behavior, accessibility, and motion.

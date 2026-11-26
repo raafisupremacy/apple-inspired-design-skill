@@ -15,9 +15,18 @@ Bring Apple's craft — confident type, content-first composition, one clear col
 - **Surface:** pick the playbook from the table in step 3.
 - **Context:** inspect the real artifact (project code, screenshots, running UI) before deciding. Reuse decisions the project already made.
 
-## 2. Settle the design direction before visual work
+## 2. Intake form first — a hard gate
 
-For a new surface or a change of visual direction, settle with the user — asking only what is unknown and changes the result:
+For a new design or a change of visual direction, **stop and have the user fill in the intake form** in [references/foundations/intake-form.md](references/foundations/intake-form.md) before writing UI code, generating tokens, or producing mockups:
+
+1. Pre-fill every field you can from the project and the conversation.
+2. Ask only the missing fields — with the host's structured question tool when available (multiple choice + "Other", at most two rounds), otherwise with the text form in one message, in the user's language.
+3. Required: what it is and for whom, surface, **color**, mood, theme, **core object**. Optional: assets, likes/dislikes.
+4. Wait for the answers. Do not fill required fields with your own guesses. If the user says "you decide", decide and state each choice in one line.
+
+Skip the form for small refinements or when the project already answers every field.
+
+The answers settle the design direction:
 
 - **Color — always resolve it.** Use the user's brand or chosen color. If none exists, ask, or offer three distinct directions (seed hex + strategy + mood + reason). **Never silently default to black, white, gray, or system blue.** Generate accessible tokens with `scripts/palette.py` (`references/foundations/color.md`).
 - **Core object — always resolve it.** Name the one thing only this product has (the next departure, the card and balance, the page being read, the dish, the deploy) and build the composition around it. Apply the **swap test**: if the design would still fit another product after swapping logo and content, it is a template; redo it.
@@ -27,10 +36,11 @@ If the user says "you choose", decide, state it in one line, and continue. Detai
 
 ## 3. Load what the task needs
 
-Always read the four core foundations, then add the rest by task. Do not load every file by default.
+Always read the four core foundations (and the intake form for new work), then add the rest by task. Do not load every file by default.
 
 | Always | |
 | --- | --- |
+| [intake form](references/foundations/intake-form.md) | the questions to ask before new work, how to ask them, how answers map to decisions |
 | [principles](references/foundations/principles.md) | the eight Apple signals, design direction intake, decision order, trade-offs, boundaries |
 | [color](references/foundations/color.md) | color intake, strategies, palette generator, dark mode, validation |
 | [typography](references/foundations/typography.md) | typefaces and licensing, scales per platform, hierarchy recipes |

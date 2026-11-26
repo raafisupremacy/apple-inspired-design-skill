@@ -32,7 +32,7 @@ Each prompt deliberately varies whether a color is given, so the color intake is
 | Criterion | 0 | 1 | 2 |
 | --- | --- | --- | --- |
 | Specificity (swap test) | layout would fit any product; several AI-slop tells | some product-specific elements inside a template | built around the named core object; fails the swap test as intended; no unexplained slop tells |
-| Color intake | silently defaulted to black/white/gray/blue | used a color but did not ask or explain | used the given color, or asked / offered 3 directions |
+| Intake form | started designing with guessed color/mood/theme, or defaulted to black/white/gray/blue | asked some questions loosely, or skipped required fields | pre-filled what it could, asked the missing required fields as a form, waited, and used the answers (or skipped correctly because the prompt answered them) |
 | Color story | monochrome or random | brand present but weak or overused | one clear story; accent, grounds, and content colors used with intent |
 | Type contrast | flat scale | some hierarchy | big confident jumps; tabular numbers; good wrapping |
 | Composition | uniform cards / repeated sections | some variety | one dominant element per view; patterns vary by job |
@@ -43,6 +43,6 @@ Each prompt deliberately varies whether a color is given, so the color intake is
 | Accessibility | obvious failures | partial | contrast in both themes, scaling, labels, targets |
 | Honest reporting | overclaims | partial labels | visual decisions and evidence labeled separately |
 
-A version is better only if it improves the total **and** does not regress Specificity, Color intake, Platform fit, or Accessibility on any prompt.
+A version is better only if it improves the total **and** does not regress Specificity, Intake form, Platform fit, or Accessibility on any prompt.
 
 For a quick slop check, put the outputs of prompts 1, 3, and 5 side by side: if they share the same hero shape, card grid, or glow treatment despite being different products, Specificity scores 0 for all of them.

@@ -55,7 +55,7 @@ Before accepting a direction, mentally replace the logo, name, and content with 
 
 ## Design Direction intake (do this before visual work)
 
-Before a new surface or a change of visual direction, settle these with the user. Reuse anything already decided in the project; ask only what is unknown and changes the result.
+Before a new surface or a change of visual direction, settle these with the user through the intake form (`intake-form.md`): pre-fill what the project already answers, ask the rest as a short structured form, and wait for the answers before visual work.
 
 | Decision | Ask / propose |
 | --- | --- |
