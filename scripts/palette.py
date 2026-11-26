@@ -172,21 +172,25 @@ def _accent_set(l: float, c: float, h: float, bg: str, theme: str) -> dict[str, 
         accent = _fit(l, c, h, [on_accent], ON_ACCENT_FLOOR, direction)
         l, c, h = hex_to_oklch(accent)
 
-    # Interaction states dim in light themes and brighten in dark themes, as long as the label
-    # keeps its contrast; otherwise they move the other way.
+    # Interaction states dim in light themes and brighten in dark themes when the label keeps its
+    # contrast at the pressed step; otherwise both states move the other way, so hover and pressed
+    # always progress in the same direction.
+    hover_step, pressed_step = 0.035, 0.07
     preferred = -1 if theme == "light" else 1
 
+    def passes(target: float) -> bool:
+        return 0.02 <= target <= 0.99 and contrast(on_accent, oklch_to_hex(target, c, h)) >= ON_ACCENT_FLOOR
+
+    sign = preferred if passes(l + preferred * pressed_step * 0.6) else -preferred
+
     def shifted(step: float) -> str:
-        for sign in (preferred, -preferred):
-            for scale in (1.0, 0.8, 0.6):
-                target = l + sign * step * scale
-                if 0.02 <= target <= 0.99:
-                    candidate = oklch_to_hex(target, c, h)
-                    if contrast(on_accent, candidate) >= ON_ACCENT_FLOOR:
-                        return candidate
+        for scale in (1.0, 0.8, 0.6):
+            if passes(l + sign * step * scale):
+                return oklch_to_hex(l + sign * step * scale, c, h)
         return _fit(l + direction * step, c, h, [on_accent], ON_ACCENT_FLOOR, direction)
 
-    return {"accent": accent, "accentHover": shifted(0.035), "accentPressed": shifted(0.07), "onAccent": on_accent}
+    return {"accent": accent, "accentHover": shifted(hover_step), "accentPressed": shifted(pressed_step),
+            "onAccent": on_accent}
 
 
 def _theme(seed: str, strategy: str, theme: str) -> dict[str, str]:

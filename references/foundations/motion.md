@@ -4,6 +4,34 @@ Motion is part of the interface's information architecture. Functional motion sh
 
 When a page or product surface benefits from a signature motion moment, choose one that expresses the product or clarifies its key relationship. Do not require a showcase animation for routine operational or reading tasks. Use small state transitions elsewhere only as feedback. A scroll reveal on every section, a generic fade-in, or a hover lift on every card is not a motion system.
 
+## Feel kit: why interfaces feel rigid and how to fix it
+
+Rigid-feeling apps usually lack four things: touch response, springs, gesture tracking, and continuity. Add them in this order.
+
+1. **Press feedback on every tappable surface.** Scale to ~0.97 (cards) or dim to ~0.85 opacity (rows, small buttons) immediately on touch-down; release with a snappy spring. Never wait for the tap to finish before responding.
+2. **Springs instead of linear or ease timing for movement.** Use the platform's presets first.
+3. **Gestures that track the finger.** Sheets, carousels, swipe actions, and pull-to-refresh follow the finger 1:1, rubber-band past their limits, and settle with the release velocity.
+4. **Continuity.** Large titles collapse into the bar on scroll; a tapped card grows into its detail; a selection indicator slides instead of jumping; a tab bar minimizes while reading.
+5. **Haptics on Apple platforms and Android** for meaningful moments (selection change, success, destructive confirmation) — never as the only feedback.
+
+Starting spring presets (this skill's calibration, not Apple's internal values; mass = 1):
+
+| Preset | Character | response / damping | stiffness / damping coefficient |
+| --- | --- | --- | --- |
+| smooth | no bounce; navigation, layout changes | 0.5s / 1.0 | 158 / 25.1 |
+| snappy | quick, tiny settle; controls, press release, toggles | 0.38s / 0.86 | 273 / 28.4 |
+| bouncy | playful overshoot; celebratory or toy-like moments only | 0.5s / 0.7 | 158 / 17.6 |
+
+Per stack:
+
+- **SwiftUI:** `.animation(.smooth)`, `.snappy`, `.bouncy`, or `.spring(duration:bounce:)`; `.sensoryFeedback(.selection, trigger:)`; `matchedGeometryEffect` / `.navigationTransition(.zoom(sourceID:in:))` for card-to-detail; `.scrollTransition` for scroll-linked effects; `.presentationDetents` for sheets.
+- **Web:** the starter tokens include `--spring-smooth|snappy|bouncy` as CSS `linear()` curves with matching `--spring-*-duration`, plus `--press-scale` / `--press-opacity`. View Transitions for shared elements; scroll-driven animations (`animation-timeline: view()`) with a static fallback.
+- **Compose:** `spring(dampingRatio = 0.86f, stiffness = 273f)` or `Spring.DampingRatioNoBouncy` with `Spring.StiffnessMediumLow`; `SharedTransitionLayout` for shared elements; `Modifier.graphicsLayer { scaleX = … }` with `interactionSource` for press.
+- **Flutter:** `SpringDescription(mass: 1, stiffness: 273, damping: 28.4)` with `SpringSimulation`, or `Curves.easeOutCubic` for short fades; `Hero` for shared elements; `AnimatedScale` on press.
+- **React Native (Reanimated):** `withSpring(value, { mass: 1, stiffness: 273, damping: 28.4 })`; `Gesture.Pan()` from Gesture Handler for tracking; shared element transitions where the project's navigation supports them.
+
+Always provide the reduced-motion path described below: keep press dimming and state changes, remove travel and bounce.
+
 ## Source basis and limits
 
 Cross-checked against the following official Apple sources on 2026-10-20:
@@ -163,13 +191,13 @@ These recipes apply the platform patterns below; they are optional starting poin
 
 For reorder, define what happens when the dragged item or drop target disappears: resolve against current eligible items or cancel visibly under the existing product policy. Do not restore stale data to preserve an animation. For shared content, an unmounted, filtered, or unavailable counterpart is a fallback case, not permission to change the user's filters or selection.
 
-Repeat relevant checks with reduced motion active and with the preference changed mid-transition. Verify the final state and operability even if no animation completion fires. Record viewport, input, sequence, and observed outcome using compatibility-testing.md; these recipes alone are not evidence of working runtime behavior.
+Repeat relevant checks with reduced motion active and with the preference changed mid-transition. Verify the final state and operability even if no animation completion fires. Record viewport, input, sequence, and observed outcome using ../quality/review-and-evidence.md; these recipes alone are not evidence of working runtime behavior.
 
 ## Platform patterns
 
 ### Segmented controls and selection surfaces
 
-For a compact single-selection control whose design uses a moving background or underline, treat that indicator as one shared surface. Choose the semantic control first using patterns-components.md. Native controls, static swatches, and independent multi-select filters do not require a shared pill.
+For a compact single-selection control whose design uses a moving background or underline, treat that indicator as one shared surface. Choose the semantic control first using ../quality/accessibility.md. Native controls, static swatches, and independent multi-select filters do not require a shared pill.
 
 - Keep the option labels and icons stationary; move or resize one selection layer using measured bounds, a layout animation, or a transform.
 - Animate the selection layer with a short spring or calibrated ease-out (roughly `180–280ms` for a compact control). Let the label color and icon treatment follow with a shorter fade or color transition.

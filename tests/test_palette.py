@@ -73,6 +73,18 @@ class PaletteTests(unittest.TestCase):
         self.assertLess(palette.hex_to_oklch(light["accentPressed"])[0],
                         palette.hex_to_oklch(light["accent"])[0])
 
+    def test_hover_and_pressed_move_the_same_way(self):
+        for seed in SEEDS:
+            for strategy in palette.STRATEGIES:
+                for theme in ("light", "dark"):
+                    roles = palette.build_palette(seed, strategy)[theme]
+                    base = palette.hex_to_oklch(roles["accent"])[0]
+                    hover = palette.hex_to_oklch(roles["accentHover"])[0] - base
+                    pressed = palette.hex_to_oklch(roles["accentPressed"])[0] - base
+                    with self.subTest(seed=seed, strategy=strategy, theme=theme):
+                        self.assertGreaterEqual(hover * pressed, 0)
+                        self.assertGreaterEqual(abs(pressed), abs(hover) - 1e-3)
+
     def test_dark_seed_is_lightened_for_dark_theme(self):
         result = palette.build_palette("#0A1F44")
         self.assertGreater(palette.hex_to_oklch(result["dark"]["accent"])[0],

@@ -1,7 +1,14 @@
-"""Check that every local Markdown reference in the skill exists."""
+"""Check that every local file reference in the skill's Markdown exists.
+
+Covers Markdown links ``[text](path)`` and code-formatted paths such as
+``../foundations/color.md`` or ``scripts/palette.py``. A code-formatted path is
+valid when it exists relative to the document or to the repository root.
+"""
 
 from pathlib import Path
 import re
+
+CODE_PATH = re.compile(r"`((?:\.\./|[\w-]+/)*[\w.-]+\.(?:md|py|json|css|html|yaml))`")
 
 
 def main() -> int:
@@ -9,7 +16,8 @@ def main() -> int:
     missing = []
     checked = 0
     for document in root.rglob("*.md"):
-        if ".git" in document.parts:
+        parts = document.relative_to(root).parts
+        if ".git" in parts:
             continue
         text = document.read_text(encoding="utf-8")
         for target in re.findall(r"\]\(([^)]+)\)", text):
@@ -19,10 +27,15 @@ def main() -> int:
             checked += 1
             if not (document.parent / target).is_file():
                 missing.append(f"{document.relative_to(root)} -> {target}")
+        for target in CODE_PATH.findall(text):
+            checked += 1
+            if not ((document.parent / target).is_file() or (root / target).is_file()):
+                missing.append(f"{document.relative_to(root)} -> `{target}`")
     if missing:
-        raise SystemExit("missing references: " + ", ".join(missing))
-    print(f"references valid; checked {checked} local links")
+        raise SystemExit("missing references:\n  " + "\n  ".join(missing))
+    print(f"references valid; checked {checked} local references")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

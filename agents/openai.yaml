@@ -1,4 +1,4 @@
 interface:
   display_name: Apple-inspired Design
-  short_description: Design, review, or implement polished web and mobile UI with thoughtful motion.
-  default_prompt: Use Apple-inspired Design to advise on, review, specify, or implement this web or mobile interface.
+  short_description: Apple-quality apps, websites, SaaS, ads, and decks in your own colors and brand.
+  default_prompt: Use Apple-inspired Design to design, review, or build this interface. Ask me for my color direction first if I have not given one.
