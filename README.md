@@ -4,6 +4,16 @@ An agent skill that brings Apple-level craft to any product, platform, and brand
 
 Confident typography, content-first composition, one clear color story, generous space, soft continuous shapes, meaningful depth (including Liquid Glass where the platform has it), and physical, responsive motion. The skill adapts these to the product instead of making everything look gray, black, and Apple-blue.
 
+**Version 2.0.0** — see [CHANGELOG.md](CHANGELOG.md).
+
+## What's new in 2.0
+
+- **Intake form before new work:** the agent asks for color, mood, theme, and the product's core object instead of guessing.
+- **Your colors:** a generator turns any color into accessible light/dark tokens for CSS, Tailwind, SwiftUI, Compose, and Flutter, with a precomputed library for agents that cannot run Python.
+- **Built around the core object, not a template:** a swap test and an explicit list of AI-slop tells keep results specific to the product.
+- **Craft over rules:** typography scales, layout patterns, Liquid Glass, motion springs, and playbooks for mobile, web, SaaS/PaaS, commerce, ads, decks, and more.
+- **Breaking:** references and starter tokens were restructured; the changelog has a migration table.
+
 ## What it covers
 
 | Area | Surfaces |
@@ -23,6 +33,8 @@ npx skills add raafisupremacy/apple-inspired-design-skill
 ```
 
 Restart or refresh the agent if it does not discover the skill. Run the same command again to update.
+
+The skill uses the open `SKILL.md` format, so it works with Claude Code and other agents that read skills (for example Codex, GitHub Copilot, Cursor, and Gemini CLI); the installer places it in the right folder for each detected agent. Agents with a multiple-choice question tool show the intake form as a form; others ask it as a numbered list. Agents without Python use the bundled palette library instead of the generator.
 
 ## Use it
 
@@ -70,8 +82,9 @@ Open `examples/core-object-gallery.html` in a browser: a transit, a banking, and
 
 ## Package contents
 
-- `SKILL.md` — entry point: design direction intake, routing table, build order, boundaries
-- `references/foundations/` — principles, color, typography, layout, depth and materials, imagery and icons, copy and voice, motion
+- `SKILL.md` — entry point: intake form gate, routing table, build order, boundaries
+- `CHANGELOG.md` — release notes and migration from 1.x
+- `references/foundations/` — intake form, principles, color, palette library, typography, layout, depth and materials, imagery and icons, copy and voice, motion
 - `references/surfaces/` — iOS, Android and cross-platform, marketing web, SaaS/PaaS, commerce, advertising, presentations and email, desktop and spatial, domain patterns
 - `references/stacks/` — web, SwiftUI, Compose, Flutter and React Native
 - `references/quality/` — accessibility, anti-patterns, modes/reviews/evidence, checklist
@@ -87,6 +100,8 @@ python -m unittest discover -s tests
 python scripts/validate_tokens.py
 python scripts/check_references.py
 ```
+
+After changing the generator or starter tokens, regenerate with `python scripts/palette.py "#F2643A" --strategy tinted --write-starter` and `python scripts/palette.py --write-library`. Record user-facing changes in `CHANGELOG.md` and bump `metadata.version` in `SKILL.md`.
 
 ## Scope and honesty
 

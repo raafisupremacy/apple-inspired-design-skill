@@ -1,8 +1,9 @@
 ---
 name: apple-inspired-design
-description: Design, review, or build Apple-quality interfaces and visuals in the user's own colors and brand — iOS and Android apps, cross-platform (Flutter, React Native), websites and landing pages, SaaS/PaaS and dashboards, developer tools, commerce, ads and social assets, App Store screenshots, presentations, email, desktop, watch, and spatial. Use for UI advice, design specs, visual redesigns, reviews, or implementation.
+description: Design, redesign, review, or build Apple-quality UI and visuals in the user's own colors and brand. Use when an interface or visual should look polished, premium, Apple-like, or less generic — iOS and Android apps, Flutter and React Native, websites and landing pages, SaaS/PaaS dashboards, developer tools, commerce, ads and social posts, App Store screenshots, presentations, email, desktop, watch, and spatial — or when the user asks for UI advice, a design spec, a color palette, design tokens, motion, or a design review. Starts new work with a short intake form (color, mood, theme, core object). Not for backend or business-logic work.
 metadata:
   short-description: Apple-quality design for any product, in your colors
+  version: 2.0.0
 ---
 
 # Apple-inspired design

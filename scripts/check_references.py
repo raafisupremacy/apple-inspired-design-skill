@@ -3,6 +3,7 @@
 Covers Markdown links ``[text](path)`` and code-formatted paths such as
 ``../foundations/color.md`` or ``scripts/palette.py``. A code-formatted path is
 valid when it exists relative to the document or to the repository root.
+CHANGELOG.md is skipped: it records files and paths from earlier versions.
 """
 
 from pathlib import Path
@@ -17,7 +18,7 @@ def main() -> int:
     checked = 0
     for document in root.rglob("*.md"):
         parts = document.relative_to(root).parts
-        if ".git" in parts:
+        if ".git" in parts or parts == ("CHANGELOG.md",):
             continue
         text = document.read_text(encoding="utf-8")
         for target in re.findall(r"\]\(([^)]+)\)", text):
